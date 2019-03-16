@@ -15,6 +15,7 @@ gem 'sidekiq'
 gem 'sidekiq-cron'
 gem 'mutations'
 gem 'awesome_print'
+gem "redis-namespace"
 gem 'puma', '~> 3.11'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
