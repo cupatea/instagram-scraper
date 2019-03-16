@@ -5,10 +5,16 @@ ruby '2.6.2'
 
 gem 'rails', github: "rails/rails"
 
+# scraping tools
+gem 'httparty'
+gem 'nokogiri'
+
 gem 'webpacker'
 gem 'pg'
 gem 'sidekiq'
 gem 'sidekiq-cron'
+gem 'mutations'
+gem 'awesome_print'
 gem 'puma', '~> 3.11'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
