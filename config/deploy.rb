@@ -1,5 +1,5 @@
 set :application, "instagram-scpraper"
-set :repo_url, "git@gitlab.com:cupatea/instagram-scraper"
+set :repo_url, "git@github.com:cupatea/instagram-scraper.git"
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.6.2'
@@ -19,7 +19,8 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # Default value for :linked_files is []
 set :linked_files, %w[config/database.yml
                       config/sidekiq.yml
-                      config/master.key]
+                      config/master.key
+                      config/sidekiq_schedule.yml]
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w[log

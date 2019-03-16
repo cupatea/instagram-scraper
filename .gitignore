@@ -28,6 +28,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/database.yml
+/config/sidekiq.yml
+/config/sidekiq_schedule.yml
 
 /public/packs
 /public/packs-test
