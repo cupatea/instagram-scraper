@@ -1,0 +1,4 @@
+followers_datum_create_Worker:
+  cron: "0 */6 * * *"
+  class: "FollowersDatumCreateWorker"
+  queue: default
