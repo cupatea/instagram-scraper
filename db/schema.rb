@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_16_122222) do
+ActiveRecord::Schema.define(version: 2019_03_16_123020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "followers", force: :cascade do |t|
+  create_table "followers_data", force: :cascade do |t|
     t.integer "count"
     t.datetime "scrape_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "instagram_user_id"
+    t.index ["instagram_user_id"], name: "index_followers_data_on_instagram_user_id"
   end
 
+  create_table "instagram_users", force: :cascade do |t|
+    t.string "username"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "followers_data", "instagram_users"
 end
