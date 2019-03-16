@@ -1,7 +1,7 @@
 class Instagram::Scrape < ApplicationService
 
   required do
-    string :profile_name
+    string :username
   end
 
   optional do
@@ -18,7 +18,7 @@ class Instagram::Scrape < ApplicationService
   private
 
   def prepare_basic_info
-    html_page       = _get_html_page(url: "#{resource_url}/#{profile_name}")
+    html_page       = _get_html_page(url: "#{resource_url}/#{username}")
     element         = _find_element(html_page: html_page)
     parsed_element  = _parse_element(element: element)
     graph_element   = parsed_element["entry_data"]["ProfilePage"].first["graphql"]
