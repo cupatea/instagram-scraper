@@ -25,7 +25,7 @@ class Instagram::Scrape < ApplicationService
 
     OpenStruct.new(
       user: _prepare_user(user: graph_element["user"]),
-      content: _prepare_content(content: graph_element["user"]["edge_owner_to_timeline_media"])
+      posts: _prepare_content(content: graph_element["user"]["edge_owner_to_timeline_media"])
     )
   end
 
