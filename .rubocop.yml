@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: '2.3.6'
+  TargetRubyVersion: '2.6.2'
   Exclude:
     - 'node_modules/**/*'
     - 'vendor/**/*'
@@ -11,7 +11,7 @@ AllCops:
     - 'config/environment.rb'
     - 'db/migrate/*'
     - 'db/schema.rb'
-    - 'spec/**/*'
+    # - 'spec/**/*'
     - 'bin/*'
     - '*'
     - 'test/**/*'
@@ -96,7 +96,7 @@ Metrics/BlockLength:
 # Offense count: 3
 # Configuration parameters: CountComments.
 Metrics/ClassLength:
-  Max: 136
+  Max: 150
 
 # Offense count: 6
 Metrics/CyclomaticComplexity:
@@ -155,6 +155,9 @@ Style/NumericLiterals:
 Style/PercentLiteralDelimiters:
   Enabled: false
 
+Style/RescueStandardError:
+  Enabled: false
+
 # Offense count: 67
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
@@ -193,3 +196,6 @@ Style/NumericLiterals:
 # URISchemes: http, https
 Metrics/LineLength:
   Max: 154
+
+Style/GuardClause:
+  Enabled: false
