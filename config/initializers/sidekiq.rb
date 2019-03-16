@@ -8,5 +8,5 @@ Sidekiq.configure_server do |config|
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = { url: "redis://localhost:6379/", namespace: "windblow_#{Rails.env}" }
+  config.redis = { url: "redis://localhost:6379/", namespace: "instagram-scraper_#{Rails.env}" }
 end
