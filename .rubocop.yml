@@ -1,0 +1,195 @@
+AllCops:
+  TargetRubyVersion: '2.3.6'
+  Exclude:
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - 'config/environments/*'
+    - 'config/initializers/*'
+    - 'config/application.rb'
+    - 'config/boot.rb'
+    - 'config/environment.rb'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+    - 'spec/**/*'
+    - 'bin/*'
+    - '*'
+    - 'test/**/*'
+
+Rails:
+  Enabled: true
+
+Metrics/BlockLength:
+  Max: 40
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 20
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Offense count: 194
+# Cop supports --auto-correct.
+Layout/EmptyLines:
+  Enabled: false
+
+# Offense count: 178
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: empty_lines, no_empty_lines
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+# Offense count: 29
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+# Offense count: 37
+# Cop supports --auto-correct.
+# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
+Layout/ExtraSpacing:
+  Enabled: false
+
+# Offense count: 39
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, IndentationWidth.
+# SupportedStyles: consistent, special_for_inner_method_call, special_for_inner_method_call_in_parentheses
+Layout/FirstParameterIndentation:
+  Enabled: false
+
+# Offense count: 78
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, IndentationWidth.
+# SupportedStyles: special_inside_parentheses, consistent, align_braces
+Layout/IndentHash:
+  Enabled: false
+
+# Offense count: 729
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
+# SupportedStyles: space, no_space, compact
+# SupportedStylesForEmptyBraces: space, no_space
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+# Offense count: 15
+Metrics/AbcSize:
+  Max: 62
+
+# Offense count: 94
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Max: 438
+
+# Offense count: 3
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 136
+
+# Offense count: 6
+Metrics/CyclomaticComplexity:
+  Max: 19
+
+# Offense count: 123
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Metrics/LineLength:
+  Max: 304
+
+# Offense count: 6
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 40
+
+# Offense count: 4
+Metrics/PerceivedComplexity:
+  Max: 21
+
+# Offense count: 90
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: braces, no_braces, context_dependent
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+# Offense count: 40
+# Cop supports --auto-correct.
+# Configuration parameters: AutoCorrect, EnforcedStyle.
+# SupportedStyles: nested, compact
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Offense count: 27
+# Cop supports --auto-correct.
+Style/IfUnlessModifier:
+  Enabled: false
+
+# Offense count: 30
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: require_parentheses, require_no_parentheses, require_no_parentheses_except_multiline
+Style/MethodDefParentheses:
+  Enabled: false
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: Strict.
+Style/NumericLiterals:
+  MinDigits: 7
+
+# Offense count: 49
+# Cop supports --auto-correct.
+# Configuration parameters: PreferredDelimiters.
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+# Offense count: 67
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
+# SupportedStyles: single_quotes, double_quotes
+Style/StringLiterals:
+  Enabled: false
+
+
+# Offense count: 27
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, MinSize.
+# SupportedStyles: percent, brackets
+Style/SymbolArray:
+  Enabled: false
+
+# Offense count: 9
+# Cop supports --auto-correct.
+# Configuration parameters: WordRegex.
+# SupportedStyles: percent, brackets
+Style/WordArray:
+  EnforcedStyle: percent
+  MinSize: 3
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 30
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: Strict.
+Style/NumericLiterals:
+  MinDigits: 15
+
+# Offense count: 52
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Metrics/LineLength:
+  Max: 154
