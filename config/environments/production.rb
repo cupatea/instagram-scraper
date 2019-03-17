@@ -91,5 +91,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Devise mailer
-  config.action_mailer.default_url_options = { host: Rails.application.credentials[:production][:hostname] }
+  config.action_mailer.default_url_options = { host: 'instat.cf' }
 end

@@ -6,7 +6,7 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-server Rails.application.credentials[:production][:hostname], user: "deploy", roles: %w{app db web}
+server 'instat.cf', user: "deploy", roles: %w{app db web}
 set :branch,    'master'
 set :rails_env, 'production'
 set :deploy_to, '/home/deploy/www/instagram-scraper/production'
