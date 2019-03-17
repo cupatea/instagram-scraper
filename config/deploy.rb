@@ -1,4 +1,4 @@
-set :application, "instagram-scpraper"
+set :application, "instagram-scraper"
 set :repo_url, "git@github.com:cupatea/instagram-scraper.git"
 
 set :rbenv_type, :user
