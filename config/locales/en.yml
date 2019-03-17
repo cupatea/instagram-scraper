@@ -22,6 +22,7 @@ en:
   customer_service: Customer servise
   dashboard: Dashboard
   delete: Delete
+  destroy_confirmation: Are you sure you want to destroy the profile?
   edit: Edit
   email: Email
   empty: Empty
@@ -33,67 +34,18 @@ en:
       destroy:
         failure: User can't be destroyed
         success: User has been successfuly destroyed
-      new_avatar!:
-        failure:
-          not_found: Avatar not found
-        success: Avatar is successfully set
-      remove_avatar!:
-        failure:
-          not_found: Avatar not found
-        success: Avatar is successfuly removed
-      send_invite!:
-        failure:
-          message_not_sent: Invitation massage has been failed to send
-          user_not_found: User not found
-        success: Invitation massage has been successfuly sent
       toggle_access:
         locked: User's access has been locked
         unlocked: User's access has been unlocked
       update:
         failure: User wasn't updated!
         success: User has been succssfully updated
-      update_search_setting:
-        failure: Search settings wasn't updated!
-        success: Search settings has been successfully updated
-  hight_ranges:
-    one_eight_five: 185-190
-    one_eighty: 180-185
-    one_fifty: 150-155
-    one_fifty_five: 155-160
-    one_fourty: 140-145
-    one_fourty_five: 145-150
-    one_ninety: 190-195
-    one_ninety_five: 195-200
-    one_seventy: 170-175
-    one_seventy_five: 175-180
-    one_sixty: 160-165
-    one_sixty_five: 165-170
-    two_five: 205-210
-    two_ten: 210-215
-    two_zero: 200-205
-    undisclosed: Undisclosed
-  input:
-    birthday:
-      invalid: Please fill in your birthday
-    email:
-      invalid: Please fill in your email
-    gander:
-      invalid: Please select your gender
-    looking_for:
-      invalid: Please selecta a gender of person you are looking for
-    name:
-      invalid: Name must be present
-    nickname:
-      invalid: Nickname is invalid. Try something else
-    password:
-      invalid: Password must be 6 digits munimum
-    placeholder:
-      email: Email
-      fullname: Full name
-      nickname: Nickname
-      password: Password
-    terms_and_conditions:
-      invalid: Please accept terms and conditions
+    instagram_user:
+      destroy:
+        failure: User can't be destroyed
+        success: User has been successfuly destroyed
+
+  instagram_users: Instagram users
   last_seen_at: Last seen at
   last_sign_in_at: Last login
   last_sign_in_ip: Last IP

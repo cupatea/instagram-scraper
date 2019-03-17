@@ -31,5 +31,6 @@ Rails.application.routes.draw do
         get :confirm
       end
     end
+    resources :instagram_users, only: [:index, :show, :destroy]
   end
 end
