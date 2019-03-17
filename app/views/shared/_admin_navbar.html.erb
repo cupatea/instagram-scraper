@@ -1,0 +1,21 @@
+<nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-lg">
+  <% if current_admin.present? %>
+  <%= image_tag "default/avatar.png", class: "border border-white rounded-circle", size: 40 %>
+  <% end %>
+  <%= link_to "Dashboard", root_path, class: "navbar-brand text-white ml-4 mr-5" %>
+  <%= button_tag class: "navbar-toggler",
+    data: { toggle: "collapse", target: "#navbarSupportedContent" },
+    aria: { controls: "navbarSupportedContent", expanded: false } do %>
+    <%= fa_icon "bars", class: "text-white" %>
+  <% end %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Logout", destroy_admin_session_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Change password", edit_admin_registration_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</nav>
