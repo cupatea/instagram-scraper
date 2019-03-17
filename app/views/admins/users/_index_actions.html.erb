@@ -1,0 +1,25 @@
+<%= link_to fa_icon("eye"), admins_user_path(user), class: "btn btn-outline-secondary btn-sm" %>
+<%= link_to(user.access_locked? ? fa_icon("unlock") : fa_icon("lock"),
+  toggle_access_admins_user_path(user),
+  class: "btn btn-outline-#{user.access_locked? ? 'success' : 'danger'} btn-sm",
+  data: { confirm: t(user.access_locked? ? "unlock_confirmation" : "lock_confirmation"),
+          toggle: "tooltip",
+          placement: "top",
+          title:  t(user.access_locked? ? "unlock" : "lock")}) %>
+<% unless user.confirmed_at? %>
+  <%= link_to(fa_icon("check"),
+    confirm_admins_user_path(user),
+    class: "btn btn-outline-success btn-sm",
+    data: { confirm: t("confirm_confirmation"),
+            toggle: "tooltip",
+            placement: "top",
+            title:  t("confirm") }) %>
+<% end %>
+<%= link_to fa_icon("trash"),
+  admins_user_path(user, search_query: params[:search_query], sort: params[:sort],direction: params[:direction]),
+  method: :delete,
+  class: "btn btn-outline-danger btn-sm",
+  data: { confirm: t("destroy_confirmation"),
+          toggle: "tooltip",
+          placement: "top",
+          title:  t("delete") } %>

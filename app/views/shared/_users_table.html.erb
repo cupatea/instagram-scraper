@@ -1,0 +1,28 @@
+<% if users.any? %>
+  <div class="table-responsive my-4">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" class="align-baseline text-nowrap"><%= sortable "id" %></th>
+          <th scope="col" class="align-baseline text-center text-nowrap"><%= t "action" %></th>
+          <th scope="col" class="align-baseline text-nowrap"><%= sortable "email" %></th>
+          <th scope="col" class="align-baseline text-nowrap"><%= sortable "created_at", t("created_at" )%></th>
+          <th scope="col" class="align-baseline text-nowrap"><%= sortable "confirmed_at", t("confirmed_at" )%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.each do |user| %>
+          <tr>
+            <th scope="row" class="align-baseline"><%= user.id %></th>
+            <td class="text-center text-nowrap"><%= render actions_partial, user: user %></td>
+            <td class="align-baseline"><%= user.email %></td>
+            <td class="align-baseline"><%= user.created_at.try(:strftime, "%d/%m/%Y") %></td>
+            <td class="align-baseline"><%= user.confirmed_at.try(:strftime, "%d/%m/%Y") || t("n/a") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p class="text-center"><%= t "no_users_found" %></p>
+<% end %>

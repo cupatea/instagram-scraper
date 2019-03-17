@@ -21,4 +21,15 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => "admins/sidekiq"
     end
   end
+  # Admins routes
+  namespace :admins do
+    root "dashboard#index"
+    resources :dashboard, only: [:index]
+    resources :users, only: [:index, :show, :destroy] do
+      member do
+        get :toggle_access
+        get :confirm
+      end
+    end
+  end
 end
