@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :lockable, :confirmable, :trackable
 
+  has_many :instagram_users, dependent: :destroy
+
   def confirm_now!
     update confirmed_at: Time.zone.now
   end
