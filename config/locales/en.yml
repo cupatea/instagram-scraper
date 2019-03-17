@@ -1,33 +1,107 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
+---
 en:
-  hello: "Hello world"
+  access_denied: Access denied
+  activerecord:
+    errors:
+      messages:
+        attachment_invalid: 'Attached %{record} must be: %{extentions}'
+        restrict_dependent_destroy:
+          has_many: Cannot delete record because dependent %{record} exist
+  change_password: Change password
+  coin: Coin
+  coins: Coins
+  confirm: Confirm user
+  confirm_confirmation: Are you sure you want to manualy confirm this user?
+  confirm_new_password: Confirm new password
+  confirmation: Confirmation
+  confirmed_at: Confirmed at
+  created_at: Created
+  current_password: Current password
+  current_sign_in_at: Current login
+  current_sign_in_ip: Current IP
+  customer_service: Customer servise
+  dashboard: Dashboard
+  delete: Delete
+  edit: Edit
+  email: Email
+  empty: Empty
+  flash:
+    user:
+      confirm:
+        failure: User already confirmed
+        success: User has been successfuly confirmed
+      destroy:
+        failure: User can't be destroyed
+        success: User has been successfuly destroyed
+      new_avatar!:
+        failure:
+          not_found: Avatar not found
+        success: Avatar is successfully set
+      remove_avatar!:
+        failure:
+          not_found: Avatar not found
+        success: Avatar is successfuly removed
+      send_invite!:
+        failure:
+          message_not_sent: Invitation massage has been failed to send
+          user_not_found: User not found
+        success: Invitation massage has been successfuly sent
+      toggle_access:
+        locked: User's access has been locked
+        unlocked: User's access has been unlocked
+      update:
+        failure: User wasn't updated!
+        success: User has been succssfully updated
+      update_search_setting:
+        failure: Search settings wasn't updated!
+        success: Search settings has been successfully updated
+  hight_ranges:
+    one_eight_five: 185-190
+    one_eighty: 180-185
+    one_fifty: 150-155
+    one_fifty_five: 155-160
+    one_fourty: 140-145
+    one_fourty_five: 145-150
+    one_ninety: 190-195
+    one_ninety_five: 195-200
+    one_seventy: 170-175
+    one_seventy_five: 175-180
+    one_sixty: 160-165
+    one_sixty_five: 165-170
+    two_five: 205-210
+    two_ten: 210-215
+    two_zero: 200-205
+    undisclosed: Undisclosed
+  input:
+    birthday:
+      invalid: Please fill in your birthday
+    email:
+      invalid: Please fill in your email
+    gander:
+      invalid: Please select your gender
+    looking_for:
+      invalid: Please selecta a gender of person you are looking for
+    name:
+      invalid: Name must be present
+    nickname:
+      invalid: Nickname is invalid. Try something else
+    password:
+      invalid: Password must be 6 digits munimum
+    placeholder:
+      email: Email
+      fullname: Full name
+      nickname: Nickname
+      password: Password
+    terms_and_conditions:
+      invalid: Please accept terms and conditions
+  last_seen_at: Last seen at
+  last_sign_in_at: Last login
+  last_sign_in_ip: Last IP
+  logout: Logout
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: "..."
