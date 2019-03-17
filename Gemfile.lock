@@ -144,6 +144,8 @@ GEM
       tzinfo
     execjs (2.7.0)
     ffi (1.10.0)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
     fugit (1.1.8)
       et-orbi (~> 1.1, >= 1.1.7)
       raabro (~> 1.1)
@@ -284,6 +286,7 @@ DEPENDENCIES
   capistrano3-puma
   devise
   devise-bootstrap-views (~> 1.0)
+  font-awesome-rails
   httparty
   jbuilder (~> 2.5)
   jquery-rails

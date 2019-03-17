@@ -17,6 +17,7 @@ gem 'mutations'
 gem 'awesome_print'
 gem 'redis-namespace'
 gem 'devise'
+gem "font-awesome-rails"
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
