@@ -114,6 +114,8 @@ GEM
       capistrano (~> 3.1)
     capistrano-npm (1.0.3)
       capistrano (>= 3.0.0)
+    capistrano-passenger (0.2.0)
+      capistrano (~> 3.0)
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -125,10 +127,6 @@ GEM
       sidekiq (>= 3.4)
     capistrano-yarn (2.0.2)
       capistrano (~> 3.0)
-    capistrano3-puma (3.1.1)
-      capistrano (~> 3.7)
-      capistrano-bundler
-      puma (~> 3.4)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
@@ -294,11 +292,11 @@ DEPENDENCIES
   capistrano
   capistrano-bundler
   capistrano-npm
+  capistrano-passenger
   capistrano-rails
   capistrano-rbenv
   capistrano-sidekiq
   capistrano-yarn
-  capistrano3-puma
   devise
   devise-bootstrap-views (~> 1.0)
   font-awesome-rails

@@ -30,14 +30,14 @@ gem 'capistrano-rails', group: :development
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development do
-  gem "capistrano",         require: false
-  gem "capistrano-rbenv",   require: false
-  gem "capistrano-rails",   require: false
-  gem "capistrano-bundler", require: false
-  gem "capistrano3-puma",   require: false
-  gem "capistrano-yarn",    require: false
-  gem "capistrano-sidekiq", require: false
-  gem "capistrano-npm",     require: false
+  gem "capistrano",           require: false
+  gem "capistrano-rbenv",     require: false
+  gem "capistrano-rails",     require: false
+  gem "capistrano-bundler",   require: false
+  gem "capistrano-passenger", require: false
+  gem "capistrano-yarn",      require: false
+  gem "capistrano-sidekiq",   require: false
+  gem "capistrano-npm",       require: false
 
   gem 'web-console', github: 'rails/web-console'
   gem 'listen', '>= 3.0.5', '< 3.2'
