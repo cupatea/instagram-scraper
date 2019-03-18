@@ -2,6 +2,7 @@ require "sidekiq/web"
 require "sidekiq/cron/web"
 
 Rails.application.routes.draw do
+  root "admins/dashboard#index"
   # Devise for users and admins
   devise_for :users,
              path: "users",
@@ -16,14 +17,14 @@ Rails.application.routes.draw do
              path_names: { sign_in: "login", sign_out: "logout" }
   # Sidekick for root admin
   authenticated :admin do
-    root "admins/dashboard#index"
+    # root "admins/dashboard#index"
     authenticate :admin, ->(a) { a.root? } do
       mount Sidekiq::Web => "admins/sidekiq"
     end
   end
   # Admins routes
   namespace :admins do
-    root "dashboard#index"
+    # root "dashboard#index"
     resources :dashboard, only: [:index]
     resources :users, only: [:index, :show, :destroy] do
       member do

@@ -5,7 +5,6 @@ require "capistrano/rbenv"
 require 'capistrano/rails'
 require 'capistrano/bundler'
 require "capistrano/passenger"
-install_plugin Capistrano::Puma
 require "capistrano/sidekiq"
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
