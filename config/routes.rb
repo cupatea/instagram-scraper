@@ -34,4 +34,13 @@ Rails.application.routes.draw do
     end
     resources :instagram_users, only: [:index, :show, :destroy]
   end
+
+  # API
+  namespace :api, defaults: { format: :json }  do
+    namespace :v1 do
+      namespace :admins do
+        resources :followers_data, only: [:index, :show]
+      end
+    end
+  end
 end
