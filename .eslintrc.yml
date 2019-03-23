@@ -1,0 +1,50 @@
+env:
+  browser: true
+  es6: true
+  jquery: true
+extends: airbnb
+parserOptions:
+  sourceType: module
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    jsx: true
+plugins:
+- react
+- jsx-a11y
+- import
+rules:
+  indent:
+  - error
+  - 2
+  linebreak-style:
+  - error
+  - unix
+  quotes:
+  - error
+  - single
+  semi:
+  - error
+  - never
+  react/jsx-filename-extension:
+  - 1
+  - extensions:
+    - ".js"
+    - ".jsx"
+  react/jsx-curly-spacing:
+  - 2
+  - when: always
+    spacing:
+      objectLiterals: never
+  react/jsx-equals-spacing:
+  - 2
+  - always
+  jsx-quotes:
+    - error
+    - prefer-single
+globals:
+  App: true
+  ActionCable: true
+settings:
+  import/resolver:
+    webpack:
+      config: 'config/webpack/development.js'
