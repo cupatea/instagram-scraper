@@ -29,6 +29,8 @@ gem 'redis', '~> 4.0'
 gem 'capistrano-rails', group: :development
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'graphql'
+gem 'json_web_token'
+gem 'uuid'
 
 group :development do
   gem "capistrano",           require: false
@@ -45,4 +47,5 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'graphiql-rails'
+  gem 'pry'
 end
