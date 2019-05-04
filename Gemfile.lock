@@ -1,84 +1,4 @@
 GIT
-  remote: https://github.com/rails/rails.git
-  revision: 26b5e6284703432fc9022b215a221037fc05920d
-  specs:
-    actioncable (6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      nio4r (~> 2.0)
-      websocket-driver (>= 0.6.1)
-    actionmailbox (6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      activejob (= 6.0.0.beta3)
-      activerecord (= 6.0.0.beta3)
-      activestorage (= 6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      mail (>= 2.7.1)
-    actionmailer (6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      actionview (= 6.0.0.beta3)
-      activejob (= 6.0.0.beta3)
-      mail (~> 2.5, >= 2.5.4)
-      rails-dom-testing (~> 2.0)
-    actionpack (6.0.0.beta3)
-      actionview (= 6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      rack (~> 2.0)
-      rack-test (>= 0.6.3)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actiontext (6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      activerecord (= 6.0.0.beta3)
-      activestorage (= 6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      nokogiri (>= 1.8.5)
-    actionview (6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      builder (~> 3.1)
-      erubi (~> 1.4)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      globalid (>= 0.3.6)
-    activemodel (6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-    activerecord (6.0.0.beta3)
-      activemodel (= 6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-    activestorage (6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      activerecord (= 6.0.0.beta3)
-      marcel (~> 0.3.1)
-    activesupport (6.0.0.beta3)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-      zeitwerk (~> 1.3, >= 1.3.4)
-    rails (6.0.0.beta3)
-      actioncable (= 6.0.0.beta3)
-      actionmailbox (= 6.0.0.beta3)
-      actionmailer (= 6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      actiontext (= 6.0.0.beta3)
-      actionview (= 6.0.0.beta3)
-      activejob (= 6.0.0.beta3)
-      activemodel (= 6.0.0.beta3)
-      activerecord (= 6.0.0.beta3)
-      activestorage (= 6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      bundler (>= 1.3.0)
-      railties (= 6.0.0.beta3)
-      sprockets-rails (>= 2.0.0)
-    railties (6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      method_source
-      rake (>= 0.8.7)
-      thor (>= 0.20.3, < 2.0)
-
-GIT
   remote: https://github.com/rails/web-console.git
   revision: 3b0e6d6521f46d347bb42252865c3c87b8a84b65
   specs:
@@ -91,6 +11,61 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    actioncable (6.0.0.rc1)
+      actionpack (= 6.0.0.rc1)
+      nio4r (~> 2.0)
+      websocket-driver (>= 0.6.1)
+    actionmailbox (6.0.0.rc1)
+      actionpack (= 6.0.0.rc1)
+      activejob (= 6.0.0.rc1)
+      activerecord (= 6.0.0.rc1)
+      activestorage (= 6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+      mail (>= 2.7.1)
+    actionmailer (6.0.0.rc1)
+      actionpack (= 6.0.0.rc1)
+      actionview (= 6.0.0.rc1)
+      activejob (= 6.0.0.rc1)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 2.0)
+    actionpack (6.0.0.rc1)
+      actionview (= 6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+      rack (~> 2.0)
+      rack-test (>= 0.6.3)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actiontext (6.0.0.rc1)
+      actionpack (= 6.0.0.rc1)
+      activerecord (= 6.0.0.rc1)
+      activestorage (= 6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+      nokogiri (>= 1.8.5)
+    actionview (6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+      builder (~> 3.1)
+      erubi (~> 1.4)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    activejob (6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+      globalid (>= 0.3.6)
+    activemodel (6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+    activerecord (6.0.0.rc1)
+      activemodel (= 6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+    activestorage (6.0.0.rc1)
+      actionpack (= 6.0.0.rc1)
+      activejob (= 6.0.0.rc1)
+      activerecord (= 6.0.0.rc1)
+      marcel (~> 0.3.1)
+    activesupport (6.0.0.rc1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+      zeitwerk (~> 2.1, >= 2.1.4)
     airbrussh (1.3.1)
       sshkit (>= 1.6.1, != 1.7.0)
     autoprefixer-rails (9.5.0)
@@ -114,6 +89,8 @@ GEM
       capistrano (~> 3.1)
     capistrano-npm (1.0.3)
       capistrano (>= 3.0.0)
+    capistrano-nvm (0.0.7)
+      capistrano (~> 3.1)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
     capistrano-rails (1.4.0)
@@ -149,6 +126,10 @@ GEM
       raabro (~> 1.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.9.4)
     httparty (0.16.4)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -215,11 +196,32 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rails (6.0.0.rc1)
+      actioncable (= 6.0.0.rc1)
+      actionmailbox (= 6.0.0.rc1)
+      actionmailer (= 6.0.0.rc1)
+      actionpack (= 6.0.0.rc1)
+      actiontext (= 6.0.0.rc1)
+      actionview (= 6.0.0.rc1)
+      activejob (= 6.0.0.rc1)
+      activemodel (= 6.0.0.rc1)
+      activerecord (= 6.0.0.rc1)
+      activestorage (= 6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+      bundler (>= 1.3.0)
+      railties (= 6.0.0.rc1)
+      sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    railties (6.0.0.rc1)
+      actionpack (= 6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
+      method_source
+      rake (>= 0.8.7)
+      thor (>= 0.20.3, < 2.0)
     rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
@@ -280,7 +282,7 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    zeitwerk (1.3.4)
+    zeitwerk (2.1.6)
 
 PLATFORMS
   ruby
@@ -292,6 +294,7 @@ DEPENDENCIES
   capistrano
   capistrano-bundler
   capistrano-npm
+  capistrano-nvm
   capistrano-passenger
   capistrano-rails
   capistrano-rbenv
@@ -300,6 +303,8 @@ DEPENDENCIES
   devise
   devise-bootstrap-views (~> 1.0)
   font-awesome-rails
+  graphiql-rails
+  graphql
   httparty
   jbuilder (~> 2.5)
   jquery-rails
@@ -309,7 +314,7 @@ DEPENDENCIES
   nokogiri
   pg
   puma (~> 3.11)
-  rails!
+  rails (~> 6.0.0.rc1)
   redis (~> 4.0)
   redis-namespace
   sidekiq
