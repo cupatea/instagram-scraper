@@ -29,8 +29,8 @@ gem 'redis', '~> 4.0'
 gem 'capistrano-rails', group: :development
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'graphql'
-gem 'json_web_token'
-gem 'uuid'
+gem 'devise_token_auth'
+
 
 group :development do
   gem "capistrano",           require: false

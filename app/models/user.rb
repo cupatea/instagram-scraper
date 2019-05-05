@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include UserConst
-  include EnsureUuid
-  include JwtToken
+  include DeviseTokenAuth::Concerns::User
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
