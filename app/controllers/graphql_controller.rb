@@ -1,5 +1,7 @@
 class GraphqlController < ApplicationController
+  include DeviseTokenAuth::Concerns::SetUserByToken
   protect_from_forgery with: :null_session
+  before_action :set_user_by_token
 
   def execute
     variables = ensure_hash(params[:variables])
@@ -7,7 +9,7 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user
     }
     result = ApplicationSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
@@ -44,5 +46,9 @@ class GraphqlController < ApplicationController
     render json: { error: { message: exception.message, backtrace: exception.backtrace },
                    data: {} },
            status: :internal_server_error
+  end
+
+  def resource_name
+    :user
   end
 end
