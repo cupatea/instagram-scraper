@@ -6,7 +6,7 @@ class Mutations::User::Login < GraphQL::Schema::Mutation
 
   field :user,   Types::UserObject,  null: true
   field :token,  Types::TokenObject, null: false
-  field :errors, [String],             null: false
+  field :errors, [String],           null: false
 
   def resolve(email:, password:)
     user = User.find_for_authentication(email: email)
