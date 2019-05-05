@@ -4,15 +4,15 @@ class Mutations::User::Login < GraphQL::Schema::Mutation
   argument :email,    String, required: true
   argument :password, String, required: true
 
-  field :token,  String,               null: true
-  field :user,   Types::User::Object,  null: true
+  field :user,   Types::UserObject,  null: true
+  field :token,  Types::TokenObject, null: false
   field :errors, [String],             null: false
 
   def resolve(email:, password:)
     user = User.find_for_authentication(email: email)
 
     if (user&.valid_for_authentication?) && user.valid_password?(password)
-      { token: user.generate_token,
+      { token: user.create_new_auth_token,
         user: user,
         errors: [] }
     else
