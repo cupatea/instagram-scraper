@@ -5,7 +5,7 @@ class Mutations::User::Login < GraphQL::Schema::Mutation
   argument :password, String, required: true
 
   field :user,   Types::UserObject,  null: true
-  field :token,  Types::TokenObject, null: false
+  field :token,  Types::TokenObject, null: true
   field :errors, [String],           null: false
 
   def resolve(email:, password:)

@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def reset_confirmation_token!
     update(confirmation_token: Devise.friendly_token)
   end
+
+  def remove_access_token client_id:
+    tokens[client_id].present? && update(tokens: tokens.except(client_id))
+  end
 end

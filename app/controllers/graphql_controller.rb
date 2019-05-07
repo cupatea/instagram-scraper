@@ -1,5 +1,6 @@
 class GraphqlController < ApplicationController
   include DeviseTokenAuth::Concerns::SetUserByToken
+  attr_reader :token, :client_id
   protect_from_forgery with: :null_session
   before_action :set_user_by_token
 
@@ -9,7 +10,9 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       # Query context goes here, for example:
-      current_user: current_user
+      current_user: current_user,
+      access_token: token,
+      client_id: client_id
     }
     result = ApplicationSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
