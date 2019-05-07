@@ -7,18 +7,21 @@ class Mutations::User::Login < GraphQL::Schema::Mutation
   field :user,   Types::UserObject,  null: true
   field :token,  Types::TokenObject, null: true
   field :errors, [String],           null: false
+  field :success, Boolean,           null: false
 
   def resolve(email:, password:)
     user = User.find_for_authentication(email: email)
 
     if (user&.valid_for_authentication?) && user.valid_password?(password)
-      { token: user.create_new_auth_token,
-        user: user,
-        errors: [] }
+      { success: true,
+        errors: [],
+        token: user.create_new_auth_token,
+        user: user }
     else
-      { token: nil,
-        user: nil,
-        errors: ['Invalid credentials'] }
+      { success: false,
+        errors: ['Invalid credentials'],
+        token: nil,
+        user: nil }
     end
   end
 end

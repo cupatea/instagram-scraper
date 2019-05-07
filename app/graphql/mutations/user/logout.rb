@@ -4,14 +4,17 @@ class Mutations::User::Logout < GraphQL::Schema::Mutation
   field :user,         Types::UserObject, null: true
   field :errors,       [String],          null: false
   field :access_token, String,            null: true
+  field :success,      Boolean,           null: false
 
   def resolve
     if context[:current_user]&.remove_access_token(client_id: context[:client_id])
-      { access_token: context[:access_token],
-        errors: [] }
+      { success: true,
+        errors: [],
+        access_token: context[:access_token] }
     else
-      { access_token: context[:access_token],
-        errors: ['Provided access token or client id is not valid'] }
+      { success: false,
+        errors: ['Provided access token or client id is not valid'],
+        access_token: context[:access_token] }
     end
   end
 end
