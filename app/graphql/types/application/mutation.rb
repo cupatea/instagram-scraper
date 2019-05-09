@@ -6,5 +6,5 @@ class Types::Application::Mutation < Types::Base::Object
   field :sign_up_user,  mutation: Mutations::User::SignUp
 
   # OBSERVATIONS
-  field :create_observation, mutation: Mutations::Observation::Create
+  field :create_observation, mutation: Mutations::Observation::Create, authorize!: true
 end
