@@ -8,4 +8,5 @@ class Types::Application::Mutation < Types::Base::Object
   # OBSERVATIONS
   field :create_observation, mutation: Mutations::Observation::Create, authorize!: true
   field :delete_observation, mutation: Mutations::Observation::Delete, authorize!: true
+  field :update_observation, mutation: Mutations::Observation::Update, authorize!: true
 end

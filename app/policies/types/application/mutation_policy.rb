@@ -6,4 +6,8 @@ class Types::Application::MutationPolicy < GraphqlPolicy
   def delete_observation?
     current_user?
   end
+
+  def update_observation?
+    current_user?
+  end
 end
