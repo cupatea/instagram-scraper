@@ -2,7 +2,9 @@ class InstagramUser < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   has_many :followers_data, dependent: :destroy
-  belongs_to :user
+  has_many :observations, as: :observee, dependent: :destroy
+  has_many :users, as: :observer, through: :observations, source: :observer, source_type: 'User'
+  has_many :admins, as: :observer, through: :observations, source: :observer, source_type: 'Admin'
 
   def create_followers_datum_now logger: 'rails'
     outcome = Instagram::Scrape.run(username: username, logger: logger)

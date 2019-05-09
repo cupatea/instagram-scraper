@@ -8,7 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :lockable, :confirmable, :trackable
 
-  has_many :instagram_users, dependent: :destroy
+  has_many :observations, as: :observer, dependent: :destroy
+  has_many :instagram_users, as: :observee, through: :observations, source: :observee, source_type: 'InstagramUser'
 
   def confirm_now!
     update confirmed_at: Time.zone.now

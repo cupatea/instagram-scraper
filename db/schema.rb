@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_05_130732) do
+ActiveRecord::Schema.define(version: 2019_05_09_105134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,16 @@ ActiveRecord::Schema.define(version: 2019_05_05_130732) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "posts_count", default: 0
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_instagram_users_on_user_id"
+  end
+
+  create_table "observations", force: :cascade do |t|
+    t.integer "observer_id"
+    t.string "observer_type"
+    t.integer "observee_id"
+    t.string "observee_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["observer_type", "observee_type", "observer_id", "observee_id"], name: "index_observations_on_observer_and_obsorvee_type_and_id"
   end
 
   create_table "users", force: :cascade do |t|
