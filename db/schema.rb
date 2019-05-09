@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2019_05_09_105134) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "posts_count", default: 0
-    t.bigint "user_id"
   end
 
   create_table "observations", force: :cascade do |t|
@@ -78,5 +77,4 @@ ActiveRecord::Schema.define(version: 2019_05_09_105134) do
   end
 
   add_foreign_key "followers_data", "instagram_users"
-  add_foreign_key "instagram_users", "users"
 end
