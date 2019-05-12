@@ -7,7 +7,7 @@ class Types::Application::Query < Types::Base::Object
   # OBSERVATIONS
   field :observations, [Types::Observation], null: false, authorize!: true
   def observations
-    context[:current_user].observations.preload(:observer, :observee)
+    context[:current_user].observations.preload(:observer, observee: :followers_data)
   end
 
 end
