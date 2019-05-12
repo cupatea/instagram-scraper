@@ -1,4 +1,4 @@
-class Types::UserObject < Types::Base::Object
+class Types::User < Types::Base::Object
   description 'User object'
 
   field :email,     String,  null: false

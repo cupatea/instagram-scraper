@@ -1,7 +1,7 @@
 class Mutations::User::Logout < GraphQL::Schema::Mutation
   description "Logs out current user: delete used token from user's tokens"
 
-  field :user,         Types::UserObject, null: true
+  field :user,         Types::User, null: true
   field :errors,       [String],          null: false
   field :access_token, String,            null: true
   field :success,      Boolean,           null: false

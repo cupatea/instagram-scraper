@@ -1,4 +1,4 @@
-class Types::InstagramUserObject < Types::Base::Object
+class Types::InstagramUser < Types::Base::Object
   description 'Instagram user object'
 
   field :id,          Integer, null: false

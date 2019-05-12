@@ -1,4 +1,4 @@
-class Types::TokenObject < Types::Base::Object
+class Types::Token < Types::Base::Object
   description 'Token object'
 
   field :access_token, String, null: false, hash_key: :'access-token'

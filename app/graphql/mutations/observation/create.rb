@@ -3,8 +3,8 @@ class Mutations::Observation::Create < GraphQL::Schema::Mutation
 
   argument :username, String, required: true
 
-  field :observation, Types::ObservationObject,   null: true
-  field :observee,    Types::InstagramUserObject, null: false
+  field :observation, Types::Observation,   null: true
+  field :observee,    Types::InstagramUser, null: false
   field :errors,      [String],                   null: false
   field :success,     Boolean,                    null: false
 

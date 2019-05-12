@@ -4,8 +4,8 @@ class Mutations::User::SignUp < GraphQL::Schema::Mutation
   argument :email,    String, required: true
   argument :password, String, required: true
 
-  field :user,   Types::UserObject,  null: true
-  field :token,  Types::TokenObject, null: true
+  field :user,   Types::User,  null: true
+  field :token,  Types::Token, null: true
   field :errors, [String],           null: false
   field :success, Boolean,           null: false
 

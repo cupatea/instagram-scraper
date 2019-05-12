@@ -6,8 +6,8 @@ class Mutations::Observation::Update < GraphQL::Schema::Mutation
 
   field :errors,      [String],                   null: false
   field :success,     Boolean,                    null: false
-  field :observation, Types::ObservationObject,   null: true
-  field :observee,    Types::InstagramUserObject, null: true
+  field :observation, Types::Observation,   null: true
+  field :observee,    Types::InstagramUser, null: true
 
   def resolve(id:, observee_id:)
     observation = context[:current_user].observations.find_by(id: id)
