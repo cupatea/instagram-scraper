@@ -1,5 +1,4 @@
 class Instagram::Scrape < ApplicationService
-
   required do
     string :username
   end
@@ -34,19 +33,22 @@ class Instagram::Scrape < ApplicationService
   def _get_html_page url:
     HTTParty.get(url).body
   rescue => e
-    service_method_raise_error(error: e)
+    add_error __method__.to_sym, :failed, e.message
+    raise ServiceError, e
   end
 
   def _find_element html_page:, xpath: '/html/body/script[1]'
     Nokogiri(html_page).xpath(xpath).children.first.text[/({.+})/, 1]
   rescue => e
-    service_method_raise_error(error: e)
+    add_error __method__.to_sym, :failed, e.message
+    raise ServiceError, e
   end
 
   def _parse_element element:
     JSON.parse(element)
   rescue => e
-    service_method_raise_error(error: e)
+    add_error __method__.to_sym, :failed, e.message
+    raise ServiceError, e
   end
 
   def _prepare_user user:
@@ -62,7 +64,8 @@ class Instagram::Scrape < ApplicationService
       profile_pic_url: user['profile_pic_url'],
       profile_pic_url_hd: user['profile_pic_url_hd'] }
   rescue => e
-    service_method_raise_error(error: e)
+    add_error __method__.to_sym, :failed, e.message
+    raise ServiceError, e
   end
 
   def _prepare_content content:
@@ -70,6 +73,7 @@ class Instagram::Scrape < ApplicationService
       has_next_page: content['has_next_page'],
       content: content['edges'] }
   rescue => e
-    service_method_raise_error(error: e)
+    add_error __method__.to_sym, :failed, e.message
+    raise ServiceError, e
   end
 end
