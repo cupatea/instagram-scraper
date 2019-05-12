@@ -1,6 +1,6 @@
 class Types::Application::Query < Types::Base::Object
-  field :me, Types::UserObject, null: true
-  def me
+  field :viewer, Types::UserObject, null: true
+  def viewer
     context[:current_user]
   end
 end
