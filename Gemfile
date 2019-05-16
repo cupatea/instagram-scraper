@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'graphql'
 gem 'devise_token_auth'
 gem 'graphql-pundit'
+gem 'rack-cors'
 
 
 group :development do
