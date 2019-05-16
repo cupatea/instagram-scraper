@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import {ApolloClient} from 'apollo-client';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import {HttpLink} from 'apollo-link-http';
-import {ApolloProvider} from 'react-apollo';
+import {Query, ApolloProvider} from 'react-apollo';
+import gql from 'graphql-tag';
 import 'semantic-ui-css/semantic.min.css'
 
 const cache = new InMemoryCache();
@@ -21,9 +22,26 @@ const client = new ApolloClient({
   }),
 });
 
+cache.writeData({
+  data: {
+    isLoggedIn:
+      !!(localStorage.getItem('uid') &&
+        localStorage.getItem('client') &&
+        localStorage.getItem('token')),
+  },
+});
+
+const IS_LOGGED_IN = gql`
+  query IsUserLoggedIn {
+    isLoggedIn @client
+  }
+`;
+
 ReactDOM.render(
   <ApolloProvider client={client}>
-    Hello from Apolo React client
+    <Query query={IS_LOGGED_IN}>
+      {({data}) => (data.isLoggedIn ? 'You are logged in' :'Log in page')}
+    </Query>
   </ApolloProvider>,
   document.getElementById('root'),
 );
