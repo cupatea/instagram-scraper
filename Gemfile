@@ -51,4 +51,5 @@ group :development do
   gem 'pry'
   gem 'rubocop'
   gem 'rubocop-performance'
+  gem 'foreman'
 end
