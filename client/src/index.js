@@ -5,6 +5,7 @@ import {ApolloClient} from 'apollo-client';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import {HttpLink} from 'apollo-link-http';
 import {ApolloProvider} from 'react-apollo';
+import 'semantic-ui-css/semantic.min.css'
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
