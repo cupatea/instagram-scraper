@@ -3,7 +3,7 @@ import {Mutation, ApolloConsumer} from 'react-apollo'
 import gql from 'graphql-tag'
 
 import { LoginForm } from '../components'
-import { PageContainer } from '../components'
+import { AnonymousContainer } from '../components'
 
 export const LOGIN_USER = gql`
   mutation($email: String!, $password: String!) {
@@ -47,9 +47,9 @@ export default function Login() {
             if (error) setErrors([error])
 
             return(
-              <PageContainer messages={errors}>
+              <AnonymousContainer messages={errors}>
                 <LoginForm loginFunction={loginFunction} />
-              </PageContainer>
+              </AnonymousContainer>
             )
           }
         }

@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function PageContainer({messages=[], children}) {
+export default function AnonymousContainer({messages=[], children}) {
   const classes = useStyles()
   const transition = useSpring({opacity: 1, from:{opacity: 0}})
   return (
