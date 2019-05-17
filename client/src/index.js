@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 
 import {ApolloClient} from 'apollo-client';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import {HttpLink} from 'apollo-link-http';
 import {Query, ApolloProvider} from 'react-apollo';
+import { Router } from '@reach/router';
 import Login from './pages/login';
 import gql from 'graphql-tag';
 
@@ -41,7 +42,16 @@ const IS_LOGGED_IN = gql`
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Query query={IS_LOGGED_IN}>
-      {({data}) => (data.isLoggedIn ? 'You are logged in' : <Login />)}
+    {
+      ({data}) => (data.isLoggedIn
+        ? 'You are logged in'
+        : <Fragment>
+            <Router primary={false} component={Fragment}>
+              <Login path="/" />
+            </Router>
+          </Fragment>
+      )
+    }
     </Query>
   </ApolloProvider>,
   document.getElementById('root'),
