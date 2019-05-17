@@ -3,6 +3,7 @@ import {Mutation, ApolloConsumer} from 'react-apollo'
 import gql from 'graphql-tag'
 
 import { LoginForm } from '../components'
+import { PageContainer } from '../components'
 
 export const LOGIN_USER = gql`
   mutation($email: String!, $password: String!) {
@@ -29,7 +30,8 @@ export default function Login() {
       localStorage.setItem('uid', token.uid)
       client.writeData({data: {isLoggedIn: true} })
     } else {
-      setErrors(errors)
+      // add an id to the error so to be awere that error comes from new request
+      setErrors(errors.map(error => ({id: client.queryManager.idCounter, content: error})))
     }
   }
 
@@ -41,13 +43,13 @@ export default function Login() {
           mutation={LOGIN_USER}
           onCompleted={({loginUser}) => setTokenToStorage(client, loginUser)}>
         {
-          (login, {error}) => {
+          (loginFunction, {error}) => {
             if (error) setErrors([error])
 
             return(
-              <LoginForm
-                login={login}
-                errors={errors} />
+              <PageContainer messages={errors}>
+                <LoginForm loginFunction={loginFunction} />
+              </PageContainer>
             )
           }
         }
