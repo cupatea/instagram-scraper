@@ -7,7 +7,6 @@ import {HttpLink} from 'apollo-link-http';
 import {Query, ApolloProvider} from 'react-apollo';
 import Login from './pages/login';
 import gql from 'graphql-tag';
-import 'semantic-ui-css/semantic.min.css'
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
