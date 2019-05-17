@@ -8,6 +8,7 @@ import {Query, ApolloProvider} from 'react-apollo'
 import { Router } from '@reach/router'
 import Login from './pages/login'
 import SignUp from './pages/sign-up'
+import Pages from './pages'
 import gql from 'graphql-tag'
 
 const cache = new InMemoryCache()
@@ -45,7 +46,7 @@ ReactDOM.render(
     <Query query={IS_LOGGED_IN}>
     {
       ({data}) => (data.isLoggedIn
-        ? 'You are logged in'
+        ? <Pages />
         : <Fragment>
             <Router primary={false} component={Fragment}>
               <Login path='/'/>
