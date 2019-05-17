@@ -1,15 +1,16 @@
-import React, {Fragment} from 'react';
-import ReactDOM from 'react-dom';
+import React, {Fragment} from 'react'
+import ReactDOM from 'react-dom'
 
-import {ApolloClient} from 'apollo-client';
-import {InMemoryCache} from 'apollo-cache-inmemory';
-import {HttpLink} from 'apollo-link-http';
-import {Query, ApolloProvider} from 'react-apollo';
-import { Router } from '@reach/router';
-import Login from './pages/login';
-import gql from 'graphql-tag';
+import {ApolloClient} from 'apollo-client'
+import {InMemoryCache} from 'apollo-cache-inmemory'
+import {HttpLink} from 'apollo-link-http'
+import {Query, ApolloProvider} from 'react-apollo'
+import { Router } from '@reach/router'
+import Login from './pages/login'
+import SignUp from './pages/sign-up'
+import gql from 'graphql-tag'
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache()
 const client = new ApolloClient({
   cache,
   link: new HttpLink({
@@ -22,7 +23,7 @@ const client = new ApolloClient({
       'Content-Type': 'application/json',
     },
   }),
-});
+})
 
 cache.writeData({
   data: {
@@ -31,13 +32,13 @@ cache.writeData({
         localStorage.getItem('client') &&
         localStorage.getItem('token')),
   },
-});
+})
 
 const IS_LOGGED_IN = gql`
   query IsUserLoggedIn {
     isLoggedIn @client
   }
-`;
+`
 
 ReactDOM.render(
   <ApolloProvider client={client}>
@@ -47,7 +48,8 @@ ReactDOM.render(
         ? 'You are logged in'
         : <Fragment>
             <Router primary={false} component={Fragment}>
-              <Login path="/" />
+              <Login path='/'/>
+              <SignUp path='/sign_up'/>
             </Router>
           </Fragment>
       )
@@ -55,4 +57,4 @@ ReactDOM.render(
     </Query>
   </ApolloProvider>,
   document.getElementById('root'),
-);
+)

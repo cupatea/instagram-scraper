@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 import { Message } from '.'
+import {useSpring, animated} from 'react-spring'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -20,13 +21,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function PageContainer({messages=[], children}) {
   const classes = useStyles()
+  const transition = useSpring({opacity: 1, from:{opacity: 0}})
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        {children}
-        {messages.map(message => <Message key={message.id} content={message.content} />)}
-      </div>
-    </Container>
+    <animated.div style={transition} >
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          {children}
+          {messages.map(message => <Message key={message.content+message.id} content={message.content} />)}
+        </div>
+      </Container>
+    </animated.div>
   )
 }
