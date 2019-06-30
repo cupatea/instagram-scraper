@@ -1,61 +1,11 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 
-import {ApolloClient} from 'apollo-client'
-import {InMemoryCache} from 'apollo-cache-inmemory'
-import {HttpLink} from 'apollo-link-http'
-import {Query, ApolloProvider} from 'react-apollo'
-import { Router } from '@reach/router'
-import Login from './pages/login'
-import SignUp from './pages/sign-up'
-import Pages from './pages'
-import gql from 'graphql-tag'
-
-const cache = new InMemoryCache()
-const client = new ApolloClient({
-  cache,
-  link: new HttpLink({
-    uri: 'http://localhost:5000/graphql',
-    headers: {
-      uid: localStorage.getItem('uid'),
-      client: localStorage.getItem('client'),
-      'access-token': localStorage.getItem('token'),
-      'token-type': 'Bearer',
-      'Content-Type': 'application/json',
-    },
-  }),
-})
-
-cache.writeData({
-  data: {
-    isLoggedIn:
-      !!(localStorage.getItem('uid') &&
-        localStorage.getItem('client') &&
-        localStorage.getItem('token')),
-  },
-})
-
-const IS_LOGGED_IN = gql`
-  query IsUserLoggedIn {
-    isLoggedIn @client
-  }
-`
+import {Provider, Router} from './components'
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <Query query={IS_LOGGED_IN}>
-    {
-      ({data}) => (data.isLoggedIn
-        ? <Pages />
-        : <Fragment>
-            <Router primary={false} component={Fragment}>
-              <Login path='/'/>
-              <SignUp path='/sign_up'/>
-            </Router>
-          </Fragment>
-      )
-    }
-    </Query>
-  </ApolloProvider>,
-  document.getElementById('root'),
+  <Provider>
+    <Router />
+  </Provider>,
+  document.querySelector('#root'),
 )
