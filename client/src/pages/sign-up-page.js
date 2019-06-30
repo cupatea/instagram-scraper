@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
 import {Mutation, ApolloConsumer} from 'react-apollo'
+import {navigate} from '@reach/router'
 import gql from 'graphql-tag'
 
-import { LoginForm } from '../components'
-import { AnonymousContainer } from '../components'
+import { SignUpForm } from '../components'
+import { AnonymousContainer, routes} from '../components'
+import {setTokens} from '../utils'
 
-export const LOGIN_USER = gql`
+export const SIGN_UP_USER = gql`
   mutation($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
+    signUpUser(email: $email, password: $password) {
       success
       errors
       token {
@@ -21,14 +23,12 @@ export const LOGIN_USER = gql`
   }
 `
 
-export default function Login() {
+export default function SignUp() {
   const [errors, setErrors] = useState([])
-  function setTokenToStorage(client, { success, token, errors }) {
+  const setTokenToStorage = (client, { success, token, errors }) => {
     if (success) {
-      localStorage.setItem('token', token.accessToken)
-      localStorage.setItem('client', token.client)
-      localStorage.setItem('uid', token.uid)
-      client.writeData({data: {isLoggedIn: true} })
+      setTokens(token)
+      navigate(routes.dashboardPagePath)
     } else {
       // add an id to the error so to be awere that error comes from new request
       setErrors(errors.map(error => ({id: client.queryManager.idCounter, content: error})))
@@ -40,15 +40,18 @@ export default function Login() {
     {
       client =>
         <Mutation
-          mutation={LOGIN_USER}
-          onCompleted={({loginUser}) => setTokenToStorage(client, loginUser)}>
+          mutation={SIGN_UP_USER}
+          onCompleted={({signUpUser}) => setTokenToStorage(client, signUpUser)}>
         {
-          (loginFunction, {error}) => {
+          (signUpFunction, {error}) => {
             if (error) setErrors([error])
 
             return(
               <AnonymousContainer messages={errors}>
-                <LoginForm loginFunction={loginFunction} />
+                <SignUpForm
+                  signUpFunction={signUpFunction}
+                  loginPagePath={routes.loginPagePath}
+                />
               </AnonymousContainer>
             )
           }

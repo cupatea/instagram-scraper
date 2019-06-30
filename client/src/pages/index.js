@@ -1,15 +1,3 @@
-import React, { Fragment } from 'react'
-import { Router } from '@reach/router'
-import { UserContainer, Dashboard } from '../components'
-
-export default function Pages() {
-  return (
-    <Fragment>
-      <UserContainer>
-        <Router primary={false} component={Fragment}>
-          <Dashboard path="/" />
-        </Router>
-      </UserContainer>
-    </Fragment>
-  )
-}
+export { default as DashboardPage } from './dashboard-page'
+export { default as SignUpPage }    from './sign-up-page'
+export { default as LoginPage }     from './login-page'
