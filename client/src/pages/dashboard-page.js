@@ -1,19 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import {Mutation, ApolloConsumer} from 'react-apollo'
 import {navigate} from '@reach/router'
-import gql from 'graphql-tag'
 
 import { UserContainer, Dashboard, routes } from '../components'
 import {clearTokens, isTokens} from '../utils'
+import {LogoutUserMutation} from '../graphql'
 
-export const LOGOUT_USER = gql`
-  mutation {
-    logoutUser {
-      success
-      errors
-    }
-  }
-`
 
 export default function DashboardPage() {
   const [errors, setErrors] = useState([])
@@ -36,7 +28,7 @@ export default function DashboardPage() {
     {
       client =>
         <Mutation
-          mutation={LOGOUT_USER}
+          mutation={LogoutUserMutation}
           onCompleted={({logoutUser}) => removeTokenFromStorage(client, logoutUser)}>
         {
           (logoutFunction) => {

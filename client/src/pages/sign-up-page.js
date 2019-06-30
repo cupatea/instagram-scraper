@@ -1,27 +1,11 @@
 import React, {useState} from 'react'
 import {Mutation, ApolloConsumer} from 'react-apollo'
 import {navigate} from '@reach/router'
-import gql from 'graphql-tag'
 
-import { SignUpForm } from '../components'
-import { AnonymousContainer, routes} from '../components'
+import {SignUpForm} from '../components'
+import {AnonymousContainer, routes} from '../components'
 import {setTokens} from '../utils'
-
-export const SIGN_UP_USER = gql`
-  mutation($email: String!, $password: String!, $username: String!) {
-    signUpUser(email: $email, password: $password, username: $username) {
-      success
-      errors
-      token {
-        accessToken
-        client
-        expiry
-        tokenType
-        uid
-      }
-    }
-  }
-`
+import {SignUpUserMutation} from '../graphql'
 
 export default function SignUp() {
   const [errors, setErrors] = useState([])
@@ -40,7 +24,7 @@ export default function SignUp() {
     {
       client =>
         <Mutation
-          mutation={SIGN_UP_USER}
+          mutation={SignUpUserMutation}
           onCompleted={({signUpUser}) => setTokenToStorage(client, signUpUser)}>
         {
           (signUpFunction, {error}) => {
