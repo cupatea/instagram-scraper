@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function SignUpForm({signUpFunction}) {
+export default function SignUpForm({signUpFunction, loginPagePath}) {
   const classes = useStyles()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -88,7 +88,7 @@ export default function SignUpForm({signUpFunction}) {
         </Button>
         <Grid container justify="flex-end">
           <Grid item>
-            <Link href="/" variant="body2">
+            <Link href={loginPagePath} variant="body2">
               Already have an account? Sign in
             </Link>
           </Grid>

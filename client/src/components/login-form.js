@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function LoginForm({ loginFunction }) {
+export default function LoginForm({ loginFunction, signUpPagePath }) {
   const classes = useStyles()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -91,7 +91,7 @@ export default function LoginForm({ loginFunction }) {
             </Link>
           </Grid>
           <Grid item>
-            <Link href="/sign_up" variant="body2">
+            <Link href={signUpPagePath} variant="body2">
               {"Don't have an account? Sign Up"}
             </Link>
           </Grid>
