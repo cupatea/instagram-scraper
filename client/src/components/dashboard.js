@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -8,15 +8,14 @@ import List from '@material-ui/core/List'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
-import Badge from '@material-ui/core/Badge'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import NotificationsIcon from '@material-ui/icons/Notifications'
-import Chart from './chart'
-import { mainListItems, secondaryListItems } from './list-items'
+import AccountCircle from '@material-ui/icons/AccountCircle'
+import FollowersChart from './followers-chart'
+
+import { mainListItems } from './list-items'
 
 
 const drawerWidth = 240
@@ -97,69 +96,66 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Dashboard() {
+export default function Dashboard({logoutFunction}) {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(true)
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
-  const handleDrawerClose = () => {
-    setOpen(false)
-  }
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState(null)
+
 
   return (
     <React.Fragment>
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      <AppBar position="absolute" className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
             color="inherit"
             aria-label="Open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            onClick={() => setDrawerOpen(true)}
+            className={clsx(classes.menuButton, drawerOpen && classes.menuButtonHidden)}
           >
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Dashboard
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+          <IconButton
+             aria-owns={drawerOpen ? 'menu-appbar' : undefined}
+             aria-haspopup="true"
+             onClick={event => setProfileMenuAnchorEl(event.currentTarget) }
+             color="inherit"
+           >
+             <AccountCircle />
+           </IconButton>
         </Toolbar>
       </AppBar>
+      <Menu
+        anchorEl={profileMenuAnchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={Boolean(profileMenuAnchorEl)}
+        onClose={() => setProfileMenuAnchorEl(null)}
+      >
+        <MenuItem onClick={() => {}}>Profile</MenuItem>
+        <MenuItem onClick={() => logoutFunction()}>Logout</MenuItem>
+      </Menu>
       <Drawer
         variant="permanent"
         classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          paper: clsx(classes.drawerPaper, !drawerOpen && classes.drawerPaperClose),
         }}
-        open={open}
+        open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={() => setDrawerOpen(false)}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
         <Divider />
         <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
-          </Grid>
-        </Container>
+          <FollowersChart />
       </main>
     </React.Fragment>
   )
