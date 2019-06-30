@@ -8,8 +8,8 @@ import { AnonymousContainer, routes} from '../components'
 import {setTokens} from '../utils'
 
 export const SIGN_UP_USER = gql`
-  mutation($email: String!, $password: String!) {
-    signUpUser(email: $email, password: $password) {
+  mutation($email: String!, $password: String!, $username: String!) {
+    signUpUser(email: $email, password: $password, username: $username) {
       success
       errors
       token {
@@ -44,8 +44,6 @@ export default function SignUp() {
           onCompleted={({signUpUser}) => setTokenToStorage(client, signUpUser)}>
         {
           (signUpFunction, {error}) => {
-            if (error) setErrors([error])
-
             return(
               <AnonymousContainer messages={errors}>
                 <SignUpForm

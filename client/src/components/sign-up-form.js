@@ -26,13 +26,15 @@ export default function SignUpForm({signUpFunction, loginPagePath}) {
   const classes = useStyles()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault()
     signUpFunction({
       variables: {
         email,
-        password
+        password,
+        username,
       }
     })
   }
@@ -74,6 +76,19 @@ export default function SignUpForm({signUpFunction, loginPagePath}) {
               id="password"
               autoComplete="current-password"
               onChange = { event => setPassword(event.target.value) }
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              name="username"
+              label="Instagram username"
+              type="text"
+              id="username"
+              onChange = { event => setUsername(event.target.value) }
             />
           </Grid>
         </Grid>
