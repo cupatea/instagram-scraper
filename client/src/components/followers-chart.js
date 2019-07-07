@@ -1,14 +1,14 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Tooltip } from 'recharts'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import ta from 'time-ago'
 import clsx from 'clsx'
 
-import { Title } from '.'
 
 import {ObservationsQuery} from '../graphql'
 
@@ -26,16 +26,24 @@ const useStyles = makeStyles(theme => ({
   fixedHeight: {
     height: 240,
   },
+  title: {
+    flexGrow: 1,
+    color: 'black',
+    fontSize: '16px',
+    fontWeight: '400',
+    textTransform: 'uppercase',
+  }
 }))
 
 export default function FollowersChart() {
   const classes = useStyles()
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   const prepareData = (data) => (
     data.map(datum => (
       {
         time: ta.ago(datum.scrapeTime),
-        amount: datum.count,
+        followers: datum.count,
       }
     ))
   )
@@ -50,7 +58,9 @@ export default function FollowersChart() {
             <Grid container spacing={3}>
               <Grid item xs={12} md={8} lg={9}>
                 <Paper className={fixedHeightPaper}>
-                  <Title>{observation.observee.username}</Title>
+                  <Typography component="h2" variant="h6" color="inherit" gutterBottom className={classes.title}>
+                    {observation.observee.username}
+                  </Typography>
                   <ResponsiveContainer>
                     <LineChart
                       data={prepareData(observation.observee.followersData)}
@@ -61,13 +71,15 @@ export default function FollowersChart() {
                         left: 24,
                       }}
                     >
+                     <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
+                      <Tooltip />
                       <XAxis dataKey="time" />
                       <YAxis>
                         <Label angle={270} position="left" style={{ textAnchor: 'middle' }}>
                           Followers
                         </Label>
                       </YAxis>
-                      <Line type="monotone" dataKey="amount" stroke="#556CD6" dot={false} />
+                      <Line type="monotone" dataKey="followers" stroke='#F50057' strokeWidth={2} activeDot={{ r: 8 }} />
                     </LineChart>
                   </ResponsiveContainer>
                 </Paper>
