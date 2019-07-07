@@ -1,8 +1,0 @@
-<%= link_to fa_icon("trash"),
-  admins_instagram_user_path(user, search_query: params[:search_query], sort: params[:sort],direction: params[:direction]),
-  method: :delete,
-  class: "btn btn-outline-danger btn-sm",
-  data: { confirm: t("destroy_confirmation"),
-          toggle: "tooltip",
-          placement: "top",
-          title:  t("delete") } %>
