@@ -14,9 +14,8 @@ Rails.application.routes.draw do
              path_names: { sign_in: "login", sign_out: "logout" }
   # Sidekick for root admin
   authenticated :admin do
-    # root "admins/dashboard#index"
     authenticate :admin, ->(a) { a.root? } do
-      mount Sidekiq::Web => "admins/sidekiq"
+      mount Sidekiq::Web => "/"
     end
   end
 end
