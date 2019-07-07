@@ -1,0 +1,6 @@
+mutation LogoutUser {
+  logoutUser {
+    success
+    errors
+  }
+}

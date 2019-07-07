@@ -11,7 +11,8 @@ set :pty, true
 set :linked_files, %w[config/database.yml
                       config/sidekiq.yml
                       config/master.key
-                      config/sidekiq_schedule.yml]
+                      config/sidekiq_schedule.yml
+                      client/.env]
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w[log
@@ -21,11 +22,14 @@ set :linked_dirs, %w[log
                      vendor/bundle
                      public/system
                      node_modules
+                     client/node_modules
                      storage]
 
 set :bundle_binstubs, nil
-
 set :keep_releases, 5
+set :nvm_type, :user
+set :nvm_node, 'v8.11.1'
+set :nvm_map_bins, %w[node npm]
 
 before "deploy:assets:precompile", "deploy:yarn_install"
 
@@ -38,4 +42,12 @@ namespace :deploy do
       end
     end
   end
+
+  desc "Deploy frontend"
+  task :npm_build do
+    on roles(:web) do
+      execute("cd #{release_path}/&& cd client && npm install && npm run build")
+    end
+  end
+  after "yarn_install", "npm_build"
 end

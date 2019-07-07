@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
-gem 'rails', github: "rails/rails"
+gem 'rails', '~> 6.0.0.rc1'
 
 # scraping tools
 gem 'httparty'
@@ -28,6 +28,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
 gem 'capistrano-rails', group: :development
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'graphql'
+gem 'devise_token_auth'
+gem 'graphql-pundit'
+gem 'rack-cors'
+
 
 group :development do
   gem "capistrano",           require: false
@@ -43,4 +48,10 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'graphiql-rails'
+  gem 'pry'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'foreman'
+  gem 'letter_opener'
 end

@@ -45,9 +45,4 @@ class ApplicationService < Mutations::Command
   def service_backtrace exception
     service_logger.error exception.backtrace.first(20).map { |row| row.prepend("\t") }.join("\n")
   end
-
-  def service_method_raise_error error:
-    add_error __method__.to_sym, :failed, error.message
-    raise ServiceError, error
-  end
 end

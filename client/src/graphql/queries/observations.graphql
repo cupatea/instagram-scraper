@@ -1,0 +1,17 @@
+query Obsevations($scrapeTimeFrom: String, $scrapeTimeTo: String) {
+  observations {
+    id
+    observee {
+      ... on InstagramUser {
+        id
+        username
+        postsCount
+        followersData(scrapeTimeForm: $scrapeTimeFrom, scrapeTimeTo: $scrapeTimeTo){
+          id
+          count
+          scrapeTime
+        }
+      }
+    }
+  }
+}
