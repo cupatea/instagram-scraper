@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def remove_access_token client_id:
     tokens[client_id].present? && update(tokens: tokens.except(client_id))
   end
+
+  def own_instagram_user
+    instagram_users.first
+  end
 end
