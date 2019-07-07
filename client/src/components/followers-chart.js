@@ -50,7 +50,6 @@ export default function FollowersChart() {
   return (
     <Query query={ObservationsQuery}>
     { ({ data, loading }) => {
-      console.log({data: data})
       if (loading) return 'loading..'
       return(
         data.observations.map(observation =>(
