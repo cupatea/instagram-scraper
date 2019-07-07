@@ -8,13 +8,19 @@ class GraphqlController < ApplicationController
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    context = {
-      # Query context goes here, for example:
-      current_user: current_user,
-      access_token: token,
-      client_id: client_id
-    }
-    result = ApplicationSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    context = { current_user: current_user,
+                access_token: token,
+                client_id: client_id }
+    # NOTE: For whatever reason, if you specify a blank operation_name, graphql messes up
+    result =
+      if operation_name.present?
+        ApplicationSchema.execute(query, variables: variables,
+                                         context: context,
+                                         operation_name: operation_name)
+      else
+        ApplicationSchema.execute(query, variables: variables,
+                                         context: context)
+      end
     render json: result
   rescue => e
     raise e unless Rails.env.development?
