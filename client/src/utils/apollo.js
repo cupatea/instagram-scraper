@@ -91,7 +91,7 @@ function createErrorLink() {
 
 function createHttpLink() {
   return new HttpLink({
-    uri: process.env.API_URI || 'http://localhost:5000/graphql'
+    uri: process.env.REACT_APP_API_URI || 'http://localhost:5000/graphql'
   })
 }
 
