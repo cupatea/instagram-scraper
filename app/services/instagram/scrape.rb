@@ -52,7 +52,7 @@ class Instagram::Scrape < ApplicationService
   end
 
   def _prepare_user user:
-    { id: user['id'],
+    { instagram_id: user['id'],
       user_name: user['username'],
       full_name: user['full_name'],
       followers_count: user['edge_followed_by']['count'],
