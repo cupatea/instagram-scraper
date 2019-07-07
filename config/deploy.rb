@@ -11,6 +11,7 @@ set :pty, true
 set :linked_files, %w[config/database.yml
                       config/sidekiq.yml
                       config/master.key
+                      config/credentials/production.key
                       config/sidekiq_schedule.yml
                       client/.env]
 
