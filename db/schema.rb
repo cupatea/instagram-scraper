@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_132540) do
+ActiveRecord::Schema.define(version: 2019_07_07_135515) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
@@ -44,6 +45,8 @@ ActiveRecord::Schema.define(version: 2019_05_12_132540) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "posts_count", default: 0
     t.integer "status", default: 0, null: false
+    t.hstore "data"
+    t.index ["data"], name: "index_instagram_users_on_data", using: :gin
   end
 
   create_table "observations", force: :cascade do |t|
