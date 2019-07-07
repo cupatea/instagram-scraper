@@ -9,6 +9,7 @@
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link-http": "^1.5.14",
+    "clsx": "^1.0.4",
     "emotion": "^10.0.9",
     "graphql": "^14.4.1",
     "graphql.macro": "^1.4.2",
