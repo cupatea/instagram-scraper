@@ -79,7 +79,7 @@ export default function FollowersChart() {
                           Followers
                         </Label>
                       </YAxis>
-                      <Line type="monotone" dataKey="followers" stroke='#F50057' strokeWidth={2} activeDot={{ r: 8 }} />
+                      <Line type="monotone" dataKey="followers" stroke='#F50057' dot={false} strokeWidth={2} activeDot={{ r: 8 }} />
                     </LineChart>
                   </ResponsiveContainer>
                 </Paper>
