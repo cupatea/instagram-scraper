@@ -1,9 +1,13 @@
 class Types::InstagramUser < Types::Base::Object
   description 'Instagram user object'
 
-  field :id,             Integer,                 null: false
-  field :username,       String,                  null: false
-  field :posts_count,    Integer,                 null: false
+  field :id,                 Integer, null: false
+  field :username,           String,  null: false
+  field :posts_count,        Integer, null: false
+  field :followers_count,    String,  null: true
+  field :biography,          String,  null: true
+  field :profile_pic_url,    String,  null: true
+  field :profile_pic_url_hd, String,  null: true
   field :followers_data, [Types::FollowersDatum], null: false do
     argument :scrape_time_form, String, required: false, default_value: nil
     argument :scrape_time_to,   String, required: false, default_value: nil

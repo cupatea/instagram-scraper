@@ -6,6 +6,9 @@ query Obsevations($scrapeTimeFrom: String, $scrapeTimeTo: String) {
         id
         username
         postsCount
+        followersCount
+        profilePicUrl
+
         followersData(scrapeTimeForm: $scrapeTimeFrom, scrapeTimeTo: $scrapeTimeTo){
           id
           count
