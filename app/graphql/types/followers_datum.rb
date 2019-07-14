@@ -3,5 +3,5 @@ class Types::FollowersDatum < Types::Base::Object
 
   field :id,          Integer, null: false
   field :count,       Integer, null: false
-  field :scrape_time, String, null: false
+  field :scrape_time, Integer, null: false
 end

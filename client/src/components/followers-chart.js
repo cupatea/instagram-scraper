@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
     color: 'black',
-    fontSize: '28px',
+    fontSize: 'calc(80% + 1.vw)',
     fontWeight: '300',
   },
   sidePaper: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
   userContainer: {
     display: 'block',
     width: '100%',
-    marginRight: 44,
+    paddingRight: 44,
   },
   userInfo: {
     display: 'flex',
@@ -62,13 +62,14 @@ const useStyles = makeStyles(theme => ({
     padding: '12px 0',
   },
   userInfoElement:{
-    fontSize: 14,
+    fontSize: 'calc(70% + 0.4vw)',
     textAlign: 'center',
     width: '50%',
     color: '#999'
   },
   userInfoNumber: {
-    display: 'block',
+    display: 'flex',
+    justifyContent: 'center',
     color: '#262626',
     fontWeight: 600,
   },
@@ -84,7 +85,7 @@ export default function FollowersChart() {
   const prepareData = (data) => (
     data.map(datum => (
       {
-        time: ta.ago(datum.scrapeTime),
+        time: ta.ago(datum.scrapeTime * 1000),
         followers: datum.count,
       }
     ))
