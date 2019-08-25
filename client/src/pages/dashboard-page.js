@@ -1,14 +1,19 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import {Mutation, ApolloConsumer} from 'react-apollo'
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import {navigate} from '@reach/router'
+import ta from 'time-ago'
 
-import { UserContainer, Dashboard, routes } from '../components'
+import { FollowersChart, UserContainer, Dashboard, routes, client } from '../components'
 import {clearTokens, isTokens} from '../utils'
-import {LogoutUserMutation} from '../graphql'
-
+import {LogoutUserMutation, ObservationsQuery} from '../graphql'
 
 export default function DashboardPage() {
+  useEffect(() => {
+    if(!isTokens()) navigate(routes.loginPagePath)
+  })
+
   const [errors, setErrors] = useState([])
+
   function removeTokenFromStorage(client, { success, errors }) {
     if (success) {
       clearTokens()
@@ -19,30 +24,51 @@ export default function DashboardPage() {
     }
   }
 
-  useEffect(() => {
-    if(!isTokens()) navigate(routes.loginPagePath)
-  })
+  function prepareData(data) {
+    return data.map(datum => (
+      {
+        time: ta.ago(datum.scrapeTime * 1000),
+        followers: datum.count,
+      }
+    ))
+  }
+
+  const [logoutFunction] = useMutation(
+    LogoutUserMutation,
+    { onCompleted: ({logoutUser}) => removeTokenFromStorage(client, logoutUser) }
+  )
+
+  const {
+    loading: obsorvationsLoading,
+    data: obsorvationsData,
+    error: obsorvationsError,
+  } = useQuery(ObservationsQuery)
+
+  const renderObsorvationsList = () => {
+    if(obsorvationsLoading) return 'loading'
+    if(obsorvationsError) return `Error! ${obsorvationsError.message}`
+    return obsorvationsData.observations.map(observation =>(
+        <FollowersChart
+          key={observation.id}
+          followersData={prepareData(observation.observee.followersData)}
+          username={observation.observee.username}
+          profilePicUrl={observation.observee.profilePicUrl}
+          postsCount={observation.observee.postsCount}
+          followersCount={observation.observee.followersCount}
+        />
+    ))
+  }
 
   return(
-    <ApolloConsumer>
-    {
-      client =>
-        <Mutation
-          mutation={LogoutUserMutation}
-          onCompleted={({logoutUser}) => removeTokenFromStorage(client, logoutUser)}>
-        {
-          (logoutFunction) => {
-            return(
-              <Fragment>
-                <UserContainer messages={errors}>
-                  <Dashboard logoutFunction={logoutFunction} path={routes.loginPagePath} />
-                </UserContainer>
-              </Fragment>
-            )
-          }
-        }
-        </Mutation>
-    }
-    </ApolloConsumer>
+    <Fragment>
+      <UserContainer messages={errors}>
+        <Dashboard
+          logoutFunction={logoutFunction}
+          path={routes.loginPagePath}
+        >
+        { renderObsorvationsList() }
+        </Dashboard>
+      </UserContainer>
+    </Fragment>
   )
 }

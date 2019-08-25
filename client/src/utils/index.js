@@ -1,1 +1,1 @@
-export { createCache, setTokens, createClient, clearTokens, isTokens } from './apollo'
+export { getTokens, setTokens, clearTokens, isTokens } from './tokenStorage'

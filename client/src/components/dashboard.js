@@ -9,7 +9,6 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import ShowChart from '@material-ui/icons/ShowChart'
-import FollowersChart from './followers-chart'
 
 const drawerWidth = 240
 
@@ -82,7 +81,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Dashboard({logoutFunction}) {
+export default function Dashboard({logoutFunction, children}) {
   const classes = useStyles()
   const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState(null)
 
@@ -115,7 +114,7 @@ export default function Dashboard({logoutFunction}) {
       </Menu>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-          <FollowersChart />
+        { children }
       </main>
     </React.Fragment>
   )
