@@ -9,6 +9,7 @@ if Rails.env.production?
 end
 
 Rails.application.routes.draw do
+  devise_for :users, skip: :all
   post "/graphql", to: "graphql#execute"
   mount Sidekiq::Web => "/"
 end

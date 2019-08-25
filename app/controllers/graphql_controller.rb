@@ -1,7 +1,7 @@
 class GraphqlController < ApplicationController
   include DeviseTokenAuth::Concerns::SetUserByToken
   attr_reader :token
-  before_action :set_user_by_token
+  before_action -> { set_user_by_token(:user) }
 
   def execute
     variables = ensure_hash(params[:variables])
@@ -54,9 +54,5 @@ class GraphqlController < ApplicationController
     render json: { error: { message: exception.message, backtrace: exception.backtrace },
                    data: {} },
            status: :internal_server_error
-  end
-
-  def resource_name
-    :user
   end
 end
