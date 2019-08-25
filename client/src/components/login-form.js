@@ -24,14 +24,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function LoginForm({ loginFunction, signUpPagePath }) {
   const classes = useStyles()
-  const [email, setEmail] = useState('')
+  const [username, setUserame] = useState('')
   const [password, setPassword] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault()
     loginFunction({
       variables: {
-        email,
+        username,
         password
       }
     })
@@ -56,12 +56,11 @@ export default function LoginForm({ loginFunction, signUpPagePath }) {
           margin="normal"
           required
           fullWidth
-          id="email"
-          label="Email Address"
-          name="email"
-          autoComplete="email"
+          id="username"
+          label="Instagram Username"
+          name="username"
           autoFocus
-          onChange = { event => setEmail(event.target.value) }
+          onChange = { event => setUserame(event.target.value) }
         />
         <TextField
           variant="outlined"

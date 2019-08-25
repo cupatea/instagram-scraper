@@ -1,7 +1,7 @@
 class Mutations::User::Login < GraphQL::Schema::Mutation
   description 'Logs in a user with credentials'
 
-  argument :email,    String, required: true
+  argument :username, String, required: true
   argument :password, String, required: true
 
   field :user,   Types::User,  null: true
@@ -9,8 +9,8 @@ class Mutations::User::Login < GraphQL::Schema::Mutation
   field :errors, [String],           null: false
   field :success, Boolean,           null: false
 
-  def resolve(email:, password:)
-    user = User.find_for_authentication(email: email)
+  def resolve(username:, password:)
+    user = User.find_for_authentication(username: username)
 
     if (user&.valid_for_authentication?) && user.valid_password?(password)
       { success: true,

@@ -1,15 +1,12 @@
 class User < ApplicationRecord
-  include UserConst
   include DeviseTokenAuth::Concerns::User
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :lockable, :confirmable, :trackable
+  devise :database_authenticatable, authentication_keys: [:username]
 
   has_many :observations, as: :observer, dependent: :destroy
   has_many :instagram_users, as: :observee, through: :observations, source: :observee, source_type: 'InstagramUser'
+
+  validates :username, uniqueness: true
 
   def confirm_now!
     update confirmed_at: Time.zone.now
@@ -24,6 +21,6 @@ class User < ApplicationRecord
   end
 
   def own_instagram_user
-    instagram_users.first
+    instagram_users.find_by(username: username)
   end
 end

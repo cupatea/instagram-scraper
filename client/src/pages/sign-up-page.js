@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
-import {Mutation, ApolloConsumer} from 'react-apollo'
+import { useMutation } from '@apollo/react-hooks';
 import {navigate} from '@reach/router'
 
-import {SignUpForm} from '../components'
-import {AnonymousContainer, routes} from '../components'
+import {SignUpForm, AnonymousContainer, routes, client} from '../components'
 import {setTokens} from '../utils'
 import {SignUpUserMutation} from '../graphql'
 
@@ -19,27 +18,17 @@ export default function SignUp() {
     }
   }
 
+  const [signUpFunction] = useMutation(
+    SignUpUserMutation,
+    { onCompleted: ({signUpUser}) => setTokenToStorage(client, signUpUser) }
+  )
+
   return(
-    <ApolloConsumer>
-    {
-      client =>
-        <Mutation
-          mutation={SignUpUserMutation}
-          onCompleted={({signUpUser}) => setTokenToStorage(client, signUpUser)}>
-        {
-          (signUpFunction, {error}) => {
-            return(
-              <AnonymousContainer messages={errors}>
-                <SignUpForm
-                  signUpFunction={signUpFunction}
-                  loginPagePath={routes.loginPagePath}
-                />
-              </AnonymousContainer>
-            )
-          }
-        }
-        </Mutation>
-    }
-    </ApolloConsumer>
+    <AnonymousContainer messages={errors}>
+      <SignUpForm
+        signUpFunction={signUpFunction}
+        loginPagePath={routes.loginPagePath}
+      />
+    </AnonymousContainer>
   )
 }

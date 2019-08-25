@@ -1,17 +1,16 @@
 class Mutations::User::SignUp < GraphQL::Schema::Mutation
   description 'Creates a user'
 
-  argument :email,    String, required: true
   argument :password, String, required: true
   argument :username, String, required: true
 
   field :user,   Types::User,  null: true
   field :token,  Types::Token, null: true
-  field :errors, [String],           null: false
-  field :success, Boolean,           null: false
+  field :errors, [String],     null: false
+  field :success, Boolean,     null: false
 
-  def resolve(email:, password:, username:)
-    user = User.new(email: email, password: password)
+  def resolve(password:, username:)
+    user = User.new(username: username, uid: username, password: password)
     user.instagram_users << InstagramUser.find_or_initialize_by(username: username)
 
     if user.save

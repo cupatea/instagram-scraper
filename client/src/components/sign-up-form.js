@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignUpForm({signUpFunction, loginPagePath}) {
   const classes = useStyles()
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
 
@@ -32,7 +31,6 @@ export default function SignUpForm({signUpFunction, loginPagePath}) {
     event.preventDefault()
     signUpFunction({
       variables: {
-        email,
         password,
         username,
       }
@@ -58,11 +56,11 @@ export default function SignUpForm({signUpFunction, loginPagePath}) {
               variant="outlined"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              onChange = { event => setEmail(event.target.value) }
+              name="username"
+              label="Instagram username"
+              type="text"
+              id="username"
+              onChange = { event => setUsername(event.target.value) }
             />
           </Grid>
           <Grid item xs={12}>
@@ -76,19 +74,6 @@ export default function SignUpForm({signUpFunction, loginPagePath}) {
               id="password"
               autoComplete="current-password"
               onChange = { event => setPassword(event.target.value) }
-            />
-          </Grid>
-
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              name="username"
-              label="Instagram username"
-              type="text"
-              id="username"
-              onChange = { event => setUsername(event.target.value) }
             />
           </Grid>
         </Grid>
