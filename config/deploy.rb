@@ -22,7 +22,6 @@ set :linked_dirs, %w[log
                      tmp/sockets
                      vendor/bundle
                      public/system
-                     node_modules
                      client/node_modules
                      storage]
 
@@ -32,23 +31,13 @@ set :nvm_type, :user
 set :nvm_node, 'v8.11.1'
 set :nvm_map_bins, %w[node npm]
 
-before "deploy:assets:precompile", "deploy:yarn_install"
+before "deploy:migrate", "deploy:npm_build"
 
 namespace :deploy do
-  desc "Run rake yarn:install"
-  task :yarn_install do
-    on roles(:web) do
-      within release_path do
-        execute("cd #{release_path} && yarn install")
-      end
-    end
-  end
-
   desc "Deploy frontend"
   task :npm_build do
     on roles(:web) do
-      execute("cd #{release_path}/&& cd client && npm install && npm run build")
+      execute("cd #{release_path}/&& cd client && npm install --silent && npm run --silent build")
     end
   end
-  after "yarn_install", "npm_build"
 end
