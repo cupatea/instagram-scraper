@@ -9,6 +9,7 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import ShowChart from '@material-ui/icons/ShowChart'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const drawerWidth = 240
 
@@ -81,7 +82,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Dashboard({logoutFunction, children}) {
+export default function Dashboard({logoutFunction, loading, children}) {
   const classes = useStyles()
   const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState(null)
 
@@ -110,7 +111,13 @@ export default function Dashboard({logoutFunction, children}) {
         open={Boolean(profileMenuAnchorEl)}
         onClose={() => setProfileMenuAnchorEl(null)}
       >
-        <MenuItem onClick={() => logoutFunction()}>Logout</MenuItem>
+        <MenuItem onClick={() => logoutFunction()}>
+        {
+          loading
+            ? <CircularProgress size={24} color="secondary"/>
+            : 'Logout'
+        }
+        </MenuItem>
       </Menu>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />

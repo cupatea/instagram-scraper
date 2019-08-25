@@ -19,7 +19,7 @@ export default function Login() {
     }
   }
 
-  const [loginFunction] = useMutation(
+  const [loginFunction, {loading}] = useMutation(
     LoginUserMutation,
     { onCompleted: ({loginUser}) => setTokenToStorage(client, loginUser) }
   )
@@ -27,6 +27,7 @@ export default function Login() {
   return(
     <AnonymousContainer messages={errors}>
       <LoginForm
+        loading={loading}
         loginFunction={loginFunction}
         signUpPagePath={routes.signUpPagePath}
       />

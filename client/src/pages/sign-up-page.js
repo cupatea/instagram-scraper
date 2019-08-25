@@ -18,7 +18,7 @@ export default function SignUp() {
     }
   }
 
-  const [signUpFunction] = useMutation(
+  const [signUpFunction, {loading}] = useMutation(
     SignUpUserMutation,
     { onCompleted: ({signUpUser}) => setTokenToStorage(client, signUpUser) }
   )
@@ -28,6 +28,7 @@ export default function SignUp() {
       <SignUpForm
         signUpFunction={signUpFunction}
         loginPagePath={routes.loginPagePath}
+        loading = {loading}
       />
     </AnonymousContainer>
   )

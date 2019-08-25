@@ -6,6 +6,7 @@ import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function SignUpForm({signUpFunction, loginPagePath}) {
+export default function SignUpForm({signUpFunction, loginPagePath, loading}) {
   const classes = useStyles()
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
@@ -84,7 +85,11 @@ export default function SignUpForm({signUpFunction, loginPagePath}) {
           color="primary"
           className={classes.submit}
         >
-          Sign Up
+          {
+            loading
+            ? <CircularProgress size={24} color="secondary"/>
+            : 'Sign Up'
+          }
         </Button>
         <Grid container justify="flex-end">
           <Grid item>

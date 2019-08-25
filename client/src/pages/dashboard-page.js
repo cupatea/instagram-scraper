@@ -33,7 +33,7 @@ export default function DashboardPage() {
     ))
   }
 
-  const [logoutFunction] = useMutation(
+  const [logoutFunction, {loading}] = useMutation(
     LogoutUserMutation,
     { onCompleted: ({logoutUser}) => removeTokenFromStorage(client, logoutUser) }
   )
@@ -63,6 +63,7 @@ export default function DashboardPage() {
     <Fragment>
       <UserContainer messages={errors}>
         <Dashboard
+          loading={loading}
           logoutFunction={logoutFunction}
           path={routes.loginPagePath}
         >
