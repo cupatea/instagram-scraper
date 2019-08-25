@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+ruby '2.6.3'
 
-gem 'rails', '~> 6.0.0.rc1'
+gem 'rails', '~> 6.0.0'
 
 # scraping tools
 gem 'httparty'
@@ -18,21 +18,14 @@ gem 'awesome_print'
 gem 'redis-namespace'
 gem 'devise'
 gem 'kaminari'
-gem 'font-awesome-rails'
-gem 'devise-bootstrap-views', '~> 1.0'
-gem 'bootstrap', '~> 4.3.1'
-gem 'jquery-rails'
-gem 'turbolinks',   '~> 5'
 gem 'puma', '~> 3.11'
-gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
 gem 'capistrano-rails', group: :development
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'graphql'
-gem 'devise_token_auth'
+gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 gem 'graphql-pundit'
 gem 'rack-cors'
-
 
 group :development do
   gem "capistrano",           require: false

@@ -2,7 +2,7 @@ set :application, "instagram-scraper"
 set :repo_url, "git@github.com:cupatea/instagram-scraper.git"
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.6.2'
+set :rbenv_ruby, '2.6.3'
 
 set :passenger_restart_with_touch, true
 set :pty, true
