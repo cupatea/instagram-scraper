@@ -6,6 +6,9 @@ class InstagramUser < ApplicationRecord
   has_many :users, as: :observer, through: :observations, source: :observer, source_type: 'User'
   has_many :admins, as: :observer, through: :observations, source: :observer, source_type: 'Admin'
   enum status: { pending: 0, exist: 1, nonexistent: 2 }
+  validate :exists_on_instagram?
+
+  after_create :create_followers_datum_now
 
   delegate :instagram_id,
            :full_name,
@@ -41,6 +44,16 @@ class InstagramUser < ApplicationRecord
       update(posts_count: actual_posts_count)
       true
     else
+      false
+    end
+  end
+
+  def exists_on_instagram?
+    outcome = Instagram::Scrape.run(username: username, logger: 'rails')
+    if outcome.success?
+      true
+    else
+      errors.add :username, 'does not exist on instagram'
       false
     end
   end

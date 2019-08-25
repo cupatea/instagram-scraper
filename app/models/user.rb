@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :instagram_users, as: :observee, through: :observations, source: :observee, source_type: 'InstagramUser'
 
   validates :username, uniqueness: true
+  validates_associated :instagram_users, message: 'username does not exit on Instagram'
 
   def confirm_now!
     update confirmed_at: Time.zone.now
