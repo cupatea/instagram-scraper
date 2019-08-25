@@ -7,16 +7,6 @@ GIT
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 6.1)
 
-GIT
-  remote: https://github.com/rails/web-console.git
-  revision: 605351a8afa3b618dd5e50728d312ea3f1269f47
-  specs:
-    web-console (4.0.1)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -82,7 +72,6 @@ GEM
     ast (2.4.0)
     awesome_print (1.8.0)
     bcrypt (3.1.13)
-    bindex (0.8.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     builder (3.2.3)
@@ -206,8 +195,6 @@ GEM
     rack-cors (1.0.3)
     rack-protection (2.0.7)
       rack
-    rack-proxy (0.6.5)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.0)
@@ -287,10 +274,6 @@ GEM
     unicode-display_width (1.6.0)
     warden (1.2.8)
       rack (>= 2.0.6)
-    webpacker (4.0.7)
-      activesupport (>= 4.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -301,7 +284,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bootsnap (>= 1.1.0)
+  bootsnap
   capistrano
   capistrano-bundler
   capistrano-npm
@@ -324,10 +307,10 @@ DEPENDENCIES
   nokogiri
   pg
   pry
-  puma (~> 3.11)
+  puma
   rack-cors
   rails (~> 6.0.0)
-  redis (~> 4.0)
+  redis
   redis-namespace
   rubocop
   rubocop-performance
@@ -335,8 +318,6 @@ DEPENDENCIES
   sidekiq-cron
   spring
   spring-watcher-listen (~> 2.0.0)
-  web-console!
-  webpacker
 
 RUBY VERSION
    ruby 2.6.3p62

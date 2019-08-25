@@ -9,7 +9,6 @@ gem 'rails', '~> 6.0.0'
 gem 'httparty'
 gem 'nokogiri'
 
-gem 'webpacker'
 gem 'pg'
 gem 'sidekiq'
 gem 'sidekiq-cron'
@@ -18,10 +17,9 @@ gem 'awesome_print'
 gem 'redis-namespace'
 gem 'devise'
 gem 'kaminari'
-gem 'puma', '~> 3.11'
-gem 'redis', '~> 4.0'
-gem 'capistrano-rails', group: :development
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'puma'
+gem 'redis'
+gem 'bootsnap', require: false
 gem 'graphql'
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 gem 'graphql-pundit'
@@ -37,7 +35,6 @@ group :development do
   gem "capistrano-sidekiq",   require: false
   gem "capistrano-npm",       require: false
 
-  gem 'web-console', github: 'rails/web-console'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
