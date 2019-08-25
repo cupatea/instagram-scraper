@@ -1,7 +1,6 @@
 class GraphqlController < ApplicationController
   include DeviseTokenAuth::Concerns::SetUserByToken
-  attr_reader :token, :client_id
-  protect_from_forgery with: :null_session
+  attr_reader :token
   before_action :set_user_by_token
 
   def execute
@@ -9,8 +8,8 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = { current_user: current_user,
-                access_token: token,
-                client_id: client_id }
+                access_token: token.token,
+                client_id: token.client }
     # NOTE: For whatever reason, if you specify a blank operation_name, graphql messes up
     result =
       if operation_name.present?
