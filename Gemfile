@@ -8,6 +8,8 @@ gem 'rails', '~> 6.0.0'
 # scraping tools
 gem 'httparty'
 gem 'nokogiri'
+gem "webdrivers"
+gem "capybara"
 
 gem 'pg'
 gem 'sidekiq'
