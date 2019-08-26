@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function LoginForm({ loginFunction, signUpPagePath, loading }) {
+export default function LoginForm({ loginFunction, signUpPagePath, resetPasswordPagePath, loading }) {
   const classes = useStyles()
   const [username, setUserame] = useState('')
   const [password, setPassword] = useState('')
@@ -90,7 +90,7 @@ export default function LoginForm({ loginFunction, signUpPagePath, loading }) {
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link href="#" variant="body2">
+            <Link href={resetPasswordPagePath} variant="body2">
               Forgot password?
             </Link>
           </Grid>

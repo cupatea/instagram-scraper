@@ -2,14 +2,15 @@ import React from 'react'
 import {Router as ReachRouter, Redirect} from '@reach/router'
 import {useSpring, animated} from 'react-spring'
 
-import {DashboardPage, LoginPage, SignUpPage} from '../pages'
+import {DashboardPage, LoginPage, SignUpPage, ResetPasswordPage} from '../pages'
 import {isTokens as isLoggedIn} from '../utils'
 
 export const routes = {
-  rootPath:          '/',
-  dashboardPagePath: '/dashboard',
-  loginPagePath:     '/login',
-  signUpPagePath:    'sign-up',
+  rootPath:              '/',
+  dashboardPagePath:     '/dashboard',
+  loginPagePath:         '/login',
+  signUpPagePath:        '/sign-up',
+  resetPasswordPagePath: '/reset-passwrd',
 }
 
 export default function Router(){
@@ -31,6 +32,7 @@ export default function Router(){
 
         <LoginPage path={routes.loginPagePath}/>
         <SignUpPage path={routes.signUpPagePath}/>
+        <ResetPasswordPage path={routes.resetPasswordPagePath} />
         <DashboardPage path={routes.dashboardPagePath} />
       </ReachRouter>
     </animated.div>

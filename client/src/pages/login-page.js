@@ -30,6 +30,7 @@ export default function Login() {
         loading={loading}
         loginFunction={loginFunction}
         signUpPagePath={routes.signUpPagePath}
+        resetPasswordPagePath = { routes.resetPasswordPagePath }
       />
     </AnonymousContainer>
   )

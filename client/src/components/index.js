@@ -1,5 +1,6 @@
 export { default as LoginForm }          from './login-form'
 export { default as SignUpForm }         from './sign-up-form'
+export { default as ResetPasswordForm }  from './reset-password-form'
 export { default as UserContainer }      from './user-container'
 export { default as AnonymousContainer } from './anonymous-container'
 export { default as Message }            from './message'
