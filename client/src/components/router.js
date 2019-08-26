@@ -10,7 +10,7 @@ export const routes = {
   dashboardPagePath:     '/dashboard',
   loginPagePath:         '/login',
   signUpPagePath:        '/sign-up',
-  resetPasswordPagePath: '/reset-passwrd',
+  resetPasswordPagePath: '/reset-password',
 }
 
 export default function Router(){
