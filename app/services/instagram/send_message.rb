@@ -32,7 +32,8 @@ class Instagram::SendMessage < ApplicationService
     _browser.fill_in 'username', with: Rails.application.credentials.instagram_username
     _browser.fill_in 'password', with: Rails.application.credentials.instagram_password
     _browser.find('button[type="submit"]').click
-    _browser.click_on(ok_text) if _ok_button?
+    _browser.click_on(_ok_text) if _ok_button?
+    _browser.click_on(_save_info) if _save_info_button?
     _browser.assert_selector('span[aria-label="Direct"]')
   rescue
     add_error __method__.to_sym, :failed, "Cant find direct messeges element "\
@@ -121,8 +122,12 @@ class Instagram::SendMessage < ApplicationService
     'Send'
   end
 
-  def ok_text
+  def _ok_text
     'OK'
+  end
+
+  def _save_info
+    'Save Info'
   end
 
   def _user_is_followed?
@@ -131,8 +136,14 @@ class Instagram::SendMessage < ApplicationService
     false
   end
 
+  def _save_info_button?
+    _browser.find('button', text: _save_info)
+  rescue
+    false
+  end
+
   def _ok_button?
-    _browser.find('button', text: ok_text)
+    _browser.find('button', text: _ok_text)
   rescue
     false
   end
