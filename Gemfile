@@ -12,7 +12,7 @@ gem "webdrivers"
 gem "capybara"
 
 gem 'pg'
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.1'
 gem 'sidekiq-cron'
 gem 'mutations'
 gem 'awesome_print'
