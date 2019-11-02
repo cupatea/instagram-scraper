@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Tooltip } from 'recharts'
+import { ComposedChart, Line, Area, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Tooltip } from 'recharts'
+
 import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -116,7 +117,7 @@ export default function FollowersChart({username, profilePicUrl, postsCount, fol
         <Grid item xs={12} md={8} lg={8}>
           <Paper className={fixedHeightPaper}>
             <ResponsiveContainer>
-              <LineChart
+              <ComposedChart
                 data={followersData}
                 margin={{
                   top: 16,
@@ -134,7 +135,8 @@ export default function FollowersChart({username, profilePicUrl, postsCount, fol
                   </Label>
                 </YAxis>
                 <Line type="monotone" dataKey="followers" stroke='#F50057' dot={false} strokeWidth={2} activeDot={{ r: 8 }} />
-              </LineChart>
+                <Area type="monotone" dataKey="posts" fill="#f5c800" stroke="#f5c800" />
+              </ComposedChart>
             </ResponsiveContainer>
           </Paper>
         </Grid>

@@ -29,6 +29,7 @@ export default function DashboardPage() {
       {
         time: ta.ago(datum.scrapeTime * 1000),
         followers: datum.count,
+        posts: datum.newPost ? datum.count : 0,
       }
     ))
   }

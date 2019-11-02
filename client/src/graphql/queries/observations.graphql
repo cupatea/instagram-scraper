@@ -12,6 +12,7 @@ query Obsevations($scrapeTimeFrom: String, $scrapeTimeTo: String) {
         followersData(scrapeTimeForm: $scrapeTimeFrom, scrapeTimeTo: $scrapeTimeTo){
           id
           count
+          newPost
           scrapeTime
         }
       }
