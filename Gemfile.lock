@@ -1,13 +1,3 @@
-GIT
-  remote: https://github.com/lynndylanhurley/devise_token_auth.git
-  revision: c9bf116735d081ba8888d5098481d23882cd1e65
-  specs:
-    devise_token_auth (1.1.3)
-      bcrypt (~> 3.0)
-      devise (> 3.5.2, < 5)
-      rails (>= 4.2.0, < 6.1)
-      sprockets (= 3.7.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -117,6 +107,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_token_auth (1.1.3)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 6.1)
     erubi (1.9.0)
     et-orbi (1.2.2)
       tzinfo
@@ -270,7 +264,7 @@ GEM
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (3.7.2)
+    sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -314,7 +308,7 @@ DEPENDENCIES
   capistrano-yarn
   capybara
   devise
-  devise_token_auth!
+  devise_token_auth
   foreman
   graphiql-rails
   graphql

@@ -23,7 +23,7 @@ gem 'puma'
 gem 'redis'
 gem 'bootsnap', require: false
 gem 'graphql'
-gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
+gem 'devise_token_auth'
 gem 'graphql-pundit'
 gem 'rack-cors'
 
