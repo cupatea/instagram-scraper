@@ -35,7 +35,7 @@ class Instagram::SendMessage < ApplicationService
     _browser.click_on(_ok_text)   if _ok_button?
     _browser.click_on(_save_info) if _save_info_button?
     _browser.click_on(_not_now)   if _not_now_button?
-    _browser.assert_selector('span[aria-label="Direct"]')
+    _browser.assert_selector('svg[aria-label="Direct"]')
   rescue
     add_error __method__.to_sym, :failed, "Cant find direct messeges element "\
                                           "on the page #{_browser.current_url}"
@@ -154,7 +154,7 @@ class Instagram::SendMessage < ApplicationService
   end
 
   def _not_now_button?
-    _browser.find('button', text: _not_now)
+    _browser.find('span', text: _not_now)
   rescue
     false
   end
