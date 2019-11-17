@@ -28,15 +28,6 @@ gem 'graphql-pundit'
 gem 'rack-cors'
 
 group :development do
-  gem "capistrano",           require: false
-  gem "capistrano-rbenv",     require: false
-  gem "capistrano-rails",     require: false
-  gem "capistrano-bundler",   require: false
-  gem "capistrano-passenger", require: false
-  gem "capistrano-yarn",      require: false
-  gem "capistrano-sidekiq",   require: false
-  gem "capistrano-npm",       require: false
-
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -46,4 +37,15 @@ group :development do
   gem 'rubocop-performance'
   gem 'foreman'
   gem 'letter_opener'
+end
+
+group :deployment do
+  gem "capistrano",           require: false
+  gem "capistrano-rbenv",     require: false
+  gem "capistrano-rails",     require: false
+  gem "capistrano-bundler",   require: false
+  gem "capistrano-passenger", require: false
+  gem "capistrano-yarn",      require: false
+  gem "capistrano-sidekiq",   require: false
+  gem "capistrano-npm",       require: false
 end
