@@ -16,11 +16,14 @@ jobs:
         ruby-version: 2.6.x
     - name: Install PostgreSQL client
       run: sudo apt-get install libpq-dev
-    - name: Build with Rake
+    - name: Install gems
       run: |
         gem install bundler
-        bundle install --jobs 4 --retry 3
-    - uses: miloserdow/capistrano-deploy@v1.2
+        bundle install
+    - name: Config SSH agent
+      uses: yakuhzi/action-ssh-agent@v1
       with:
-        target: 'production'
-        deploy_key: ${{ secrets.DEPLOY_ENC_KEY }}
+        public: ${{ secrets.SSH_PUBLIC_KEY }}
+        private: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Deploy to production
+      run: bundle exec cap production deploy
