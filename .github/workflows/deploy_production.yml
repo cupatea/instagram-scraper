@@ -11,13 +11,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v1
-    - name: Start SSH agent
-      run: eval "$(ssh-agent -s)"
-    - name: Config SSH agent
-      uses: yakuhzi/action-ssh-agent@v1
+    - name: Config ssh-agent
+      uses: webfactory/ssh-agent@v0.1.1
       with:
-        public: ${{ secrets.SSH_PUBLIC_KEY }}
-        private: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
