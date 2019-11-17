@@ -2,7 +2,7 @@ name: deploy_production
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -19,11 +19,9 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Install PostgreSQL client
-      run: sudo apt-get install libpq-dev
     - name: Install gems
       run: |
         gem install bundler
-        bundle install --deployment
+        bundle install --without default:development
     - name: Deploy to production
       run: bundle exec cap production deploy
