@@ -11,10 +11,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v1
-    - name: Config ssh-agent
-      uses: webfactory/ssh-agent@v0.1.1
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v1
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        private-key: ${{ secrets.SSH_PRIVATE_KEY}}
+        public-key: ${{ secrets.SSH_KEY_PUBLIC }}
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
@@ -26,6 +27,4 @@ jobs:
         gem install bundler
         bundle install --deployment
     - name: Deploy to production
-      run: |
-        ssh-add
-        bundle exec cap production deploy
+      run: bundle exec cap production deploy
