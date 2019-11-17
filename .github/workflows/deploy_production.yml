@@ -24,6 +24,8 @@ jobs:
     - name: Install gems
       run: |
         gem install bundler
-        bundle install --with deployment
+        bundle install --deployment
     - name: Deploy to production
-      run: bundle exec cap production deploy
+      run: |
+        ssh-add
+        bundle exec cap production deploy
