@@ -1,4 +1,5 @@
 require: rubocop-performance
+require: rubocop-rails
 
 AllCops:
   TargetRubyVersion: '2.6.3'
@@ -18,14 +19,8 @@ AllCops:
     - '*'
     - 'test/**/*'
 
-Rails:
-  Enabled: true
-
 Metrics/BlockLength:
   Max: 40
-
-Metrics/LineLength:
-  Max: 120
 
 Metrics/MethodLength:
   Max: 20
@@ -42,10 +37,13 @@ Layout/EmptyLines:
 Layout/ExtraSpacing:
   Enabled: true
 
-Layout/IndentFirstArgument:
+Layput/LineLength:
+  Max: 100
+
+Layout/FirstArgumentIndentation:
   Enabled: true
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Enabled: true
 
 Layout/SpaceInsideHashLiteralBraces:
@@ -62,9 +60,6 @@ Metrics/CyclomaticComplexity:
 
 Metrics/PerceivedComplexity:
   Max: 21
-
-Style/BracesAroundHashParameters:
-  Enabled: false
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact

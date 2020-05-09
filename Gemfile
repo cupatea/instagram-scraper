@@ -35,6 +35,7 @@ group :development do
   gem 'pry'
   gem 'rubocop'
   gem 'rubocop-performance'
+  gem 'rubocop-rails'
   gem 'foreman'
   gem 'letter_opener'
 end
