@@ -15,10 +15,10 @@ jobs:
       uses: webfactory/ssh-agent@v0.1.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY}}
-    - name: Set up Ruby 2.6
+    - name: Set up Ruby 2.7
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
+        ruby-version: 2.7.x
     - name: Install gems
       run: |
         gem install bundler
