@@ -1,4 +1,4 @@
-class Mutations::User::SignUp < GraphQL::Schema::Mutation
+class Mutations::User::SignUp < ApplicationMutation
   description 'Creates a user'
 
   argument :password, String, required: true
@@ -14,15 +14,9 @@ class Mutations::User::SignUp < GraphQL::Schema::Mutation
     user.instagram_users << InstagramUser.find_or_initialize_by(username: username)
 
     if user.save
-      { success: true,
-        errors: [],
-        token: user.create_new_auth_token,
-        user: user }
+      success_mutation(user: user, token: user.create_new_auth_token)
     else
-      { success: false,
-        errors: user.errors.to_a,
-        token: nil,
-        user: nil }
+      failed_mutation(user.errors.to_a, user: nil, token: nil)
     end
   end
 end

@@ -1,4 +1,4 @@
-class Mutations::User::Login < GraphQL::Schema::Mutation
+class Mutations::User::Login < ApplicationMutation
   description 'Logs in a user with credentials'
 
   argument :username, String, required: true
@@ -6,22 +6,16 @@ class Mutations::User::Login < GraphQL::Schema::Mutation
 
   field :user,   Types::User,  null: true
   field :token,  Types::Token, null: true
-  field :errors, [String],           null: false
-  field :success, Boolean,           null: false
+  field :errors, [String],     null: false
+  field :success, Boolean,     null: false
 
   def resolve(username:, password:)
     user = User.find_for_authentication(username: username)
 
-    if (user&.valid_for_authentication?) && user.valid_password?(password)
-      { success: true,
-        errors: [],
-        token: user.create_new_auth_token,
-        user: user }
+    if user&.valid_for_authentication? && user&.valid_password?(password)
+      success_mutation(token: user.create_new_auth_token, user: user)
     else
-      { success: false,
-        errors: ['Invalid credentials'],
-        token: nil,
-        user: nil }
+      failed_mutation(['Invalid credentials'], token: nil, user: nil)
     end
   end
 end
