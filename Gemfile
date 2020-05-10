@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.7.1'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0', '>= 6.0.3'
 
 # scraping tools
 gem 'httparty'
@@ -35,6 +35,7 @@ group :development do
   gem 'pry'
   gem 'rubocop'
   gem 'rubocop-performance'
+  gem 'rubocop-rails'
   gem 'foreman'
   gem 'letter_opener'
 end

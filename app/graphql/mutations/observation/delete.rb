@@ -1,4 +1,4 @@
-class Mutations::Observation::Delete < GraphQL::Schema::Mutation
+class Mutations::Observation::Delete < ApplicationMutation
   description 'Deletes an observation of instagram user'
 
   argument :id, Integer, required: true
@@ -9,14 +9,11 @@ class Mutations::Observation::Delete < GraphQL::Schema::Mutation
   def resolve(id:)
     observation = context[:current_user].observations.find_by(id: id)
     if observation&.destroy
-      { success: true,
-        errors: [] }
+      success_mutation
     elsif observation
-      { success: false,
-        errors: observation.errors.to_a }
+      failed_mutation(observation.errors.to_a)
     else
-      { success: false,
-        errors: ["Observation wasn't found"]}
+      failed_mutation(["Observation wasn't found"])
     end
   end
 end

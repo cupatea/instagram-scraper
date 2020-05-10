@@ -33,14 +33,14 @@ export default function LoginForm({
   resetPasswordLoading,
 }) {
   const classes = useStyles()
-  const [username, setUserame] = useState('')
+  const [email, setEmail] = useState('')
   const [resetPasswordCode,setResetPasswordCode] = useState('')
   const [newPassword, setNewPassword] = useState('')
 
   function handleSendResetPasswordMessage(event) {
     event.preventDefault()
     sendResetPasswordMessageFunction({
-      variables: {username}
+      variables: {email}
     })
 
   }
@@ -49,7 +49,7 @@ export default function LoginForm({
     event.preventDefault()
     resetPasswordFunction({
       variables: {
-        username,
+        email,
         newPassword,
         resetPasswordCode,
       }
@@ -75,12 +75,12 @@ export default function LoginForm({
           margin="normal"
           required
           fullWidth
-          id="username"
-          label="Instagram Username"
-          name="username"
+          id="email"
+          label="Reset Password Email"
+          name="email"
           disabled = {resetPasswordMessageSent}
           autoFocus
-          onChange = { event => setUserame(event.target.value) }
+          onChange = { event => setEmail(event.target.value) }
         />
         { !resetPasswordMessageSent &&
             <Button

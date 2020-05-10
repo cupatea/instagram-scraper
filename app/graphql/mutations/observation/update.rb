@@ -1,11 +1,11 @@
-class Mutations::Observation::Update < GraphQL::Schema::Mutation
+class Mutations::Observation::Update < ApplicationMutation
   description 'Update an observation of instagram user'
 
   argument :id,          Integer, required: true
   argument :observee_id, Integer, required: true
 
-  field :errors,      [String],                   null: false
-  field :success,     Boolean,                    null: false
+  field :errors,      [String],             null: false
+  field :success,     Boolean,              null: false
   field :observation, Types::Observation,   null: true
   field :observee,    Types::InstagramUser, null: true
 
