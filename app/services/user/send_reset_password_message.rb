@@ -31,7 +31,7 @@ class User::SendResetPasswordMessage < ApplicationService
     @_user ||= ::User.find_for_authentication(email: email)
     return @_user if @_user
 
-    add_error __method__.to_sym, :failed, "User with username=#{username} wasn't found"
+    add_error __method__.to_sym, :failed, "User with email=#{email} wasn't found"
     raise ServiceError
   end
 
