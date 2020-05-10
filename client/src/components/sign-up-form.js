@@ -27,6 +27,7 @@ export default function SignUpForm({signUpFunction, loginPagePath, loading}) {
   const classes = useStyles()
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -34,6 +35,7 @@ export default function SignUpForm({signUpFunction, loginPagePath, loading}) {
       variables: {
         password,
         username,
+        email,
       }
     })
   }
@@ -62,6 +64,18 @@ export default function SignUpForm({signUpFunction, loginPagePath, loading}) {
               type="text"
               id="username"
               onChange = { event => setUsername(event.target.value) }
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              name="email"
+              label="Reset password email"
+              type="email"
+              id="email"
+              onChange = { event => setEmail(event.target.value) }
             />
           </Grid>
           <Grid item xs={12}>

@@ -1,13 +1,13 @@
 class Mutations::User::SendResetPasswordMessage < ApplicationMutation
   description "Sends message via Instagram to reset password"
 
-  argument :username, String, required: true
+  argument :email, String, required: true
 
   field :errors, [String],           null: false
   field :success, Boolean,           null: false
 
-  def resolve
-    outcome = ::User::SendResetPasswordMessage.run(username: username)
+  def resolve(email:)
+    outcome = ::User::SendResetPasswordMessage.run(email: email)
 
     if outcome.success?
       success_mutation

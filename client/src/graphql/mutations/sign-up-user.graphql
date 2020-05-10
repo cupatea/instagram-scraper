@@ -1,5 +1,5 @@
-mutation SignUpUser($password: String!, $username: String!) {
-  signUpUser( password: $password, username: $username) {
+mutation SignUpUser($password: String!, $username: String!, $email: String!) {
+  signUpUser( password: $password, username: $username, email: $email) {
     success
     errors
     token {

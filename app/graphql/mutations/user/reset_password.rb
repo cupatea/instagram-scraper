@@ -1,7 +1,7 @@
 class Mutations::User::ResetPassword < ApplicationMutation
   description 'Resets password and logs in a user'
 
-  argument :username,            String, required: true
+  argument :email,               String, required: true
   argument :new_password,        String, required: true
   argument :reset_password_code, String, required: true
 
@@ -10,14 +10,13 @@ class Mutations::User::ResetPassword < ApplicationMutation
   field :errors, [String],     null: false
   field :success, Boolean,     null: false
 
-  def resolve(username:, new_password:, reset_password_code:)
+  def resolve(email:, new_password:, reset_password_code:)
     outcome =
       ::User::ResetPassword.run(
-        username: username,
+        email: email,
         new_password: new_password,
         reset_password_code: reset_password_code
       )
-
 
     if outcome.success?
       success_mutation(token: outcome.result.token, user: outcome.result.user)
